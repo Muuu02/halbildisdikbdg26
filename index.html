@@ -10,6 +10,7 @@
   <title>Absensi Halal Bihalal Disdik Bandung 2026</title>
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3003/3003755.png">
   <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3003/3003755.png">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -78,8 +79,8 @@
     <div class="max-w-3xl mx-auto px-4 py-5">
       <div class="flex items-center gap-4">
         <div class="flex-shrink-0">
-          <div class="w-14 h-14 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center border border-white/20">
-            <i data-lucide="graduation-cap" class="w-7 h-7 text-white"></i>
+          <div class="w-14 h-14 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center border border-white/20 overflow-hidden p-1.5">
+            <img src="https://cdn-icons-png.flaticon.com/512/3003/3003755.png" alt="Logo" class="w-full h-full object-contain">
           </div>
         </div>
         <div class="flex-1 min-w-0">
@@ -108,7 +109,6 @@
       
       <section class="glass-card rounded-2xl p-5 shadow-soft relative z-30">
         <h2 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Kategori Instansi</h2>
-        
         <div class="relative" id="categoryDropdownWrapper">
           <button type="button" onclick="toggleCategoryDropdown()" class="w-full flex items-center justify-between px-4 py-3 border border-slate-300 rounded-xl bg-white focus:ring-2 focus:ring-primary-500 transition-all shadow-sm">
             <div class="flex items-center gap-3" id="selectedCategoryDisplay">
@@ -117,42 +117,21 @@
             </div>
             <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-300" id="categoryDropdownIcon"></i>
           </button>
-
           <div id="categoryDropdownMenu" class="hidden absolute left-0 right-0 top-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl max-h-64 overflow-y-auto custom-scrollbar z-50">
             <div class="p-2 flex flex-col gap-1">
               <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 pt-2 pb-1">PAUD & Layanan</p>
-              <button type="button" onclick="selectCustomCategory('TK', 'baby', 'Taman Kanak-Kanak (TK)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="baby" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">TK</span>
-              </button>
-              <button type="button" onclick="selectCustomCategory('KB', 'blocks', 'Kelompok Bermain (KB)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="blocks" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">KB</span>
-              </button>
-              <button type="button" onclick="selectCustomCategory('TPA', 'book-open', 'TPA / TPQ')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="book-open" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">TPA</span>
-              </button>
-              <button type="button" onclick="selectCustomCategory('SPS', 'heart-handshake', 'Satuan PAUD Sejenis (SPS)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="heart-handshake" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SPS</span>
-              </button>
+              <button type="button" onclick="selectCustomCategory('TK', 'baby', 'Taman Kanak-Kanak (TK)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="baby" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">TK</span></button>
+              <button type="button" onclick="selectCustomCategory('KB', 'blocks', 'Kelompok Bermain (KB)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="blocks" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">KB</span></button>
+              <button type="button" onclick="selectCustomCategory('TPA', 'book-open', 'TPA / TPQ')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="book-open" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">TPA</span></button>
+              <button type="button" onclick="selectCustomCategory('SPS', 'heart-handshake', 'Satuan PAUD Sejenis (SPS)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="heart-handshake" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SPS</span></button>
               <div class="h-px bg-slate-100 my-1"></div>
-              
               <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 pt-2 pb-1">Non Formal & Formal</p>
-              <button type="button" onclick="selectCustomCategory('PKBM', 'users', 'Pusat Kegiatan Belajar (PKBM)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="users" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">PKBM</span>
-              </button>
-              <button type="button" onclick="selectCustomCategory('SKB', 'scale', 'Sanggar Kegiatan Belajar (SKB)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="scale" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SKB</span>
-              </button>
-              <button type="button" onclick="selectCustomCategory('SD', 'school', 'Sekolah Dasar (SD)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="school" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SD</span>
-              </button>
-              <button type="button" onclick="selectCustomCategory('SMP', 'building-2', 'Sekolah Menengah Pertama (SMP)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="building-2" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SMP</span>
-              </button>
+              <button type="button" onclick="selectCustomCategory('PKBM', 'users', 'Pusat Kegiatan Belajar (PKBM)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="users" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">PKBM</span></button>
+              <button type="button" onclick="selectCustomCategory('SKB', 'scale', 'Sanggar Kegiatan Belajar (SKB)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="scale" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SKB</span></button>
+              <button type="button" onclick="selectCustomCategory('SD', 'school', 'Sekolah Dasar (SD)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="school" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SD</span></button>
+              <button type="button" onclick="selectCustomCategory('SMP', 'building-2', 'Sekolah Menengah Pertama (SMP)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="building-2" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SMP</span></button>
               <div class="h-px bg-slate-100 my-1"></div>
-              
-              <button type="button" onclick="selectCustomCategory('DINAS', 'landmark', 'Dinas Pendidikan')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-purple-700 transition-colors text-left group">
-                <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600"><i data-lucide="landmark" class="w-4 h-4"></i></div><span class="font-bold text-slate-800 text-sm group-hover:text-purple-700">DINAS PENDIDIKAN</span>
-              </button>
+              <button type="button" onclick="selectCustomCategory('DINAS', 'landmark', 'Dinas Pendidikan')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-purple-700 text-left group"><div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600"><i data-lucide="landmark" class="w-4 h-4"></i></div><span class="font-bold text-slate-800 text-sm group-hover:text-purple-700">DINAS PENDIDIKAN</span></button>
             </div>
           </div>
         </div>
@@ -164,7 +143,9 @@
           <div>
             <label class="block text-sm font-medium text-slate-700 mb-2">Pilih <span id="kategoriLabel">Sekolah</span> <span class="text-red-500">*</span></label>
             <div class="relative">
-              <select id="sekolahSelect" onchange="onSchoolSelect(this.value)" class="custom-select w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 bg-white text-slate-700 cursor-pointer"><option value="">-- Pilih dari Daftar --</option></select>
+              <select id="sekolahSelect" onchange="onSchoolSelect(this.value)" class="custom-select w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 bg-white text-slate-700 cursor-pointer">
+                <option value="">-- Pilih dari Daftar --</option>
+              </select>
               <div id="schoolLoading" class="hidden absolute right-12 top-1/2 -translate-y-1/2"><div class="spinner border-slate-300 border-t-primary-500"></div></div>
             </div>
           </div>
@@ -185,7 +166,9 @@
         </div>
         <div id="jabatanSekolahWrapper" class="hidden mt-4">
           <label class="block text-sm font-medium text-slate-700 mb-2">Jabatan <span class="text-red-500">*</span></label>
-          <select id="jabatanSekolahSelect" onchange="checkJabatanLainnya(this.value)" class="custom-select w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 bg-white text-slate-700 cursor-pointer"><option value="">-- Pilih Jabatan --</option><option value="Kepala Sekolah">Kepala Sekolah</option><option value="Guru">Guru</option><option value="Layanan Khusus">Layanan Khusus</option><option value="Lainnya">Lainnya...</option></select>
+          <select id="jabatanSekolahSelect" onchange="checkJabatanLainnya(this.value)" class="custom-select w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 bg-white text-slate-700 cursor-pointer">
+            <option value="">-- Pilih Jabatan --</option><option value="Kepala Sekolah">Kepala Sekolah</option><option value="Guru">Guru</option><option value="Layanan Khusus">Layanan Khusus</option><option value="Lainnya">Lainnya...</option>
+          </select>
           <input type="text" id="jabatanLainnyaInput" class="hidden w-full mt-3 px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500" placeholder="Sebutkan jabatan lainnya...">
         </div>
         <div id="jabatanDinasWrapper" class="hidden mt-4">
@@ -292,7 +275,7 @@
 
   <script>
   // ==========================================
-  // CONFIGURATION (GANTI URL SCRIPT ANDA DI SINI)
+  // CONFIGURATION 
   // ==========================================
   const CONFIG = {
     // 👇 GANTI DENGAN URL API GOOGLE SCRIPT ANDA 👇
@@ -330,7 +313,7 @@
     `;
     lucide.createIcons();
     toggleCategoryDropdown();
-    selectJenjang(value); // Panggil fungsi aslinya
+    selectJenjang(value);
   }
 
   document.addEventListener('click', (e) => {
@@ -344,7 +327,7 @@
   // ==========================================
   // INDEXEDDB FOR OFFLINE MODE
   // ==========================================
-  const DB_NAME = 'AbsensiDB_v7'; const DB_VERSION = 1; const STORE_NAME = 'pending';
+  const DB_NAME = 'AbsensiDB_v8'; const DB_VERSION = 1; const STORE_NAME = 'pending';
   function openDB() { return new Promise((resolve, reject) => { const req = indexedDB.open(DB_NAME, DB_VERSION); req.onerror = () => reject(req.error); req.onsuccess = () => resolve(req.result); req.onupgradeneeded = (e) => { const db = e.target.result; if (!db.objectStoreNames.contains(STORE_NAME)) db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true }); }; }); }
   async function savePending(data) { const db = await openDB(); await db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).add({ data, timestamp: new Date().toISOString(), retryCount: 0 }); await updatePendingCount(); }
   async function getPending() { const db = await openDB(); return await db.transaction(STORE_NAME, 'readonly').objectStore(STORE_NAME).getAll(); }
@@ -419,26 +402,54 @@
   function calculateDistance(lat1, lng1, lat2, lng2) { const R=6371e3, p1=lat1*Math.PI/180, p2=lat2*Math.PI/180, dp=(lat2-lat1)*Math.PI/180, dl=(lng2-lng1)*Math.PI/180, a=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2; return R*2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); }
 
   // ==========================================
-  // SUBMIT DATA
+  // SUBMIT DATA (BUG FIX: Sekolah Langsung dari Dropdown)
   // ==========================================
   async function submitForm() {
     const btn = document.getElementById('submitBtn'), txt = document.getElementById('btnText'), icn = document.getElementById('btnIcon'), spn = document.getElementById('btnSpinner');
+    
     if (!selectedJenjang) return showToast('Pilih kategori instansi dulu', 'error');
-    const nama = document.getElementById('namaInput').value.trim(); if (!nama) return showToast('Nama wajib diisi', 'error');
+    
+    const nama = document.getElementById('namaInput').value.trim(); 
+    if (!nama) return showToast('Nama wajib diisi', 'error');
+    
     let namaSekolah = '', npsn = '', unit = '', jabatan = '';
     
+    // Validasi & Ambil Data Jika Menggunakan Database (Dropdown Sekolah)
     if (['TK', 'KB', 'TPA', 'SPS', 'PKBM', 'SKB', 'SD', 'SMP'].includes(selectedJenjang)) {
-      namaSekolah = document.getElementById('selectedSekolah').value; npsn = document.getElementById('selectedNPSN').value;
-      if (!namaSekolah) return showToast('Pilih sekolah/lembaga', 'error');
-      const j = document.getElementById('jabatanSekolahSelect').value; if (!j) return showToast('Jabatan wajib dipilih', 'error');
-      jabatan = j === 'Lainnya' ? document.getElementById('jabatanLainnyaInput').value.trim() : j; if (!jabatan) return showToast('Tuliskan jabatan', 'error');
+      
+      // Ambil nilai nama sekolah LANGSUNG DARI DROPDOWN, anti-gagal
+      const elSekolah = document.getElementById('sekolahSelect');
+      if (elSekolah && elSekolah.selectedIndex > 0) {
+        namaSekolah = elSekolah.options[elSekolah.selectedIndex].value;
+      }
+      
+      npsn = document.getElementById('selectedNPSN') ? document.getElementById('selectedNPSN').value : '';
+      
+      if (!namaSekolah || namaSekolah.trim() === '') return showToast('Pilih sekolah/lembaga', 'error');
+      
+      const j = document.getElementById('jabatanSekolahSelect').value; 
+      if (!j) return showToast('Jabatan wajib dipilih', 'error');
+      
+      jabatan = j === 'Lainnya' ? document.getElementById('jabatanLainnyaInput').value.trim() : j; 
+      if (!jabatan) return showToast('Tuliskan jabatan', 'error');
+      
     } else {
-      unit = document.getElementById('unitInput').value.trim(); if (!unit) return showToast('Unit wajib diisi', 'error');
-      jabatan = document.getElementById('jabatanDinasInput').value.trim(); if (!jabatan) return showToast('Jabatan wajib diisi', 'error');
+      // Jika Kategori Dinas
+      unit = document.getElementById('unitInput').value.trim(); 
+      if (!unit) return showToast('Unit wajib diisi', 'error');
+      
+      jabatan = document.getElementById('jabatanDinasInput').value.trim(); 
+      if (!jabatan) return showToast('Jabatan wajib diisi', 'error');
     }
 
     const jarak = currentPos ? calculateDistance(currentPos.lat, currentPos.lng, CONFIG.VENUE.lat, CONFIG.VENUE.lng) : null;
-    const payload = { nama, jenjang: selectedJenjang, nama_sekolah: namaSekolah, npsn, unit, jabatan, foto_base64: compressedFoto, latitude: currentPos?.lat||null, longitude: currentPos?.lng||null, accuracy: currentPos?.accuracy||null, jarak, status_lokasi: jarak ? (jarak <= CONFIG.VENUE.radius ? 'VALID' : 'TOO_FAR') : 'NO_GPS', device_info: navigator.userAgent, offline: !isOnline };
+    const payload = { 
+      nama, jenjang: selectedJenjang, nama_sekolah: namaSekolah, npsn, unit, jabatan, 
+      foto_base64: compressedFoto, latitude: currentPos?.lat||null, longitude: currentPos?.lng||null, 
+      accuracy: currentPos?.accuracy||null, jarak, 
+      status_lokasi: jarak ? (jarak <= CONFIG.VENUE.radius ? 'VALID' : 'TOO_FAR') : 'NO_GPS', 
+      device_info: navigator.userAgent, offline: !isOnline 
+    };
 
     btn.disabled = true; txt.textContent = 'Menyimpan...'; icn.classList.add('hidden'); spn.classList.remove('hidden');
     try {
