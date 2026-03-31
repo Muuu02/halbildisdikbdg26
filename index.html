@@ -70,10 +70,6 @@
           <i data-lucide="calendar-check" class="w-4 h-4 text-blue-300"></i>
           <span class="text-xs text-blue-200" id="headerDate">Sistem Terpadu</span>
         </div>
-        <div id="statusIndicator" class="flex items-center gap-2">
-          <span id="statusDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span id="statusText" class="text-xs text-blue-200">Online</span>
-        </div>
       </div>
     </div>
     <div class="max-w-3xl mx-auto px-4 py-5">
@@ -84,9 +80,9 @@
           </div>
         </div>
         <div class="flex-1 min-w-0">
-          <h1 class="text-lg md:text-xl font-bold text-white leading-tight">Halal Bihalal Keluarga Dinas Pendidikan Kota Bandung Tahun 2026</h1>
+          <h1 class="text-lg md:text-xl font-bold text-white leading-tight">Halal Bihalal Keluarga Dinas Pendidikan Kota Bandung</h1>
           <div class="flex items-center gap-2 mt-2">
-            <span class="px-2 py-0.5 bg-white/10 rounded text-xs text-blue-200 border border-white/10">07:00 - 14:00 WIB</span>
+            <span class="px-3 py-1 bg-white/10 rounded-md text-sm font-semibold text-blue-100 border border-white/10">Kamis, 2 April 2026</span>
           </div>
         </div>
       </div>
@@ -98,10 +94,10 @@
     <div id="closedSection" class="hidden text-center">
       <div class="glass-card rounded-2xl p-8 border-2 border-red-200 bg-red-50/50 shadow-soft">
         <div class="w-20 h-20 mx-auto bg-red-100 rounded-full flex items-center justify-center mb-4">
-          <i data-lucide="clock-4" class="w-10 h-10 text-red-500"></i>
+          <i data-lucide="lock" class="w-10 h-10 text-red-500"></i>
         </div>
         <h2 class="text-2xl font-bold text-slate-800 mb-2">Absensi Ditutup</h2>
-        <p class="text-slate-600">Sistem absensi hanya dibuka pada saat kegiatan berlangsung mulai pukul <b>07:00 WIB</b> hingga <b>14:00 WIB</b>.</p>
+        <p class="text-slate-600">Sistem absensi saat ini sedang ditutup oleh Admin.</p>
       </div>
     </div>
 
@@ -149,7 +145,7 @@
               <div id="schoolLoading" class="hidden absolute right-12 top-1/2 -translate-y-1/2"><div class="spinner border-slate-300 border-t-primary-500"></div></div>
             </div>
           </div>
-          <div id="npsnInfo" class="hidden"><div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl p-4"><div class="flex items-start gap-3"><div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i></div><div><p class="text-xs text-emerald-600 font-semibold uppercase">NPSN Terdeteksi</p><p class="text-xl font-bold text-slate-800 mt-1 font-mono" id="npsnDisplay">-</p><input type="hidden" id="selectedNPSN"><input type="hidden" id="selectedSekolah"></div></div></div></div>
+          <div id="npsnInfo" class="hidden"><div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl p-4"><div class="flex items-start gap-3"><div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i></div><div><p class="text-xs text-emerald-600 font-semibold uppercase">NPSN Terdeteksi</p><p class="text-xl font-bold text-slate-800 mt-1 font-mono" id="npsnDisplay">-</p><input type="hidden" id="selectedNPSN"></div></div></div></div>
         </div>
       </section>
 
@@ -270,7 +266,6 @@
     </div>
   </nav>
 
-  <div id="offlineBadge" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[110] hidden"><div class="bg-slate-800 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-xs font-medium"><i data-lucide="wifi-off" class="w-4 h-4 text-red-400"></i>Offline (<span id="pendingCount">0</span>)<button onclick="syncPending()" class="ml-2 px-2 py-0.5 bg-white/20 rounded hover:bg-white/30">Sync</button></div></div>
   <div id="toast" class="fixed top-20 right-4 z-[120] hidden max-w-sm"><div id="toastContent" class="px-4 py-3 rounded-xl shadow-lg text-white text-sm font-medium flex items-start gap-3"><span id="toastIcon" class="mt-0.5"></span><span id="toastMessage" class="flex-1"></span></div></div>
 
   <script>
@@ -278,14 +273,14 @@
   // CONFIGURATION 
   // ==========================================
   const CONFIG = {
-    // 👇 GANTI DENGAN URL API GOOGLE SCRIPT ANDA 👇
+    // 👇 PASTIKAN LINK INI SESUAI DENGAN LINK GOOGLE SCRIPT ANDA 👇
     API_URL: 'https://script.google.com/macros/s/AKfycbzFS1Fyhse4NjTKzmuVArR14lIRmj9uMLW-VX41hO5C2UQ_js5G3lL-pck7rEe_0hElQA/exec', 
     VENUE: { lat: -6.9001204, lng: 107.6259654, radius: 150 },
     FOTO: { maxWidth: 1024, maxHeight: 1024, quality: 0.7 }
   };
 
   // STATE
-  let currentPos = null; let selectedJenjang = ''; let compressedFoto = null; let isOnline = navigator.onLine; let map = null; let markers = []; let schoolsData = [];
+  let currentPos = null; let selectedJenjang = ''; let compressedFoto = null; let map = null; let markers = []; let schoolsData = [];
 
   // ==========================================
   // TAB & DROPDOWN LOGIC
@@ -325,21 +320,11 @@
   });
 
   // ==========================================
-  // INDEXEDDB FOR OFFLINE MODE
-  // ==========================================
-  const DB_NAME = 'AbsensiDB_v8'; const DB_VERSION = 1; const STORE_NAME = 'pending';
-  function openDB() { return new Promise((resolve, reject) => { const req = indexedDB.open(DB_NAME, DB_VERSION); req.onerror = () => reject(req.error); req.onsuccess = () => resolve(req.result); req.onupgradeneeded = (e) => { const db = e.target.result; if (!db.objectStoreNames.contains(STORE_NAME)) db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true }); }; }); }
-  async function savePending(data) { const db = await openDB(); await db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).add({ data, timestamp: new Date().toISOString(), retryCount: 0 }); await updatePendingCount(); }
-  async function getPending() { const db = await openDB(); return await db.transaction(STORE_NAME, 'readonly').objectStore(STORE_NAME).getAll(); }
-  async function removePending(id) { const db = await openDB(); await db.transaction(STORE_NAME, 'readwrite').objectStore(STORE_NAME).delete(id); await updatePendingCount(); }
-  async function updatePendingCount() { const count = (await getPending()).length; document.getElementById('pendingCount').textContent = count; document.getElementById('offlineBadge').classList.toggle('hidden', count === 0); return count; }
-
-  // ==========================================
   // FORM LOGIC
   // ==========================================
   async function selectJenjang(jenjang) {
     selectedJenjang = jenjang; const pakaiDB = ['TK', 'KB', 'TPA', 'SPS', 'PKBM', 'SKB', 'SD', 'SMP'].includes(jenjang);
-    document.getElementById('npsnInfo').classList.add('hidden'); document.getElementById('selectedNPSN').value = ''; document.getElementById('selectedSekolah').value = '';
+    document.getElementById('npsnInfo').classList.add('hidden'); document.getElementById('selectedNPSN').value = '';
     document.getElementById('jabatanSekolahSelect').value = ''; document.getElementById('jabatanLainnyaInput').classList.add('hidden'); document.getElementById('jabatanDinasInput').value = '';
     
     if (pakaiDB) {
@@ -366,7 +351,7 @@
 
   function onSchoolSelect(nama) {
     const s = schoolsData.find(x => x.nama === nama);
-    if (s) { document.getElementById('npsnDisplay').textContent = s.npsn || '-'; document.getElementById('namaSekolahDisplay').textContent = s.nama; document.getElementById('selectedNPSN').value = s.npsn || ''; document.getElementById('selectedSekolah').value = s.nama; document.getElementById('npsnInfo').classList.remove('hidden'); } 
+    if (s) { document.getElementById('npsnDisplay').textContent = s.npsn || '-'; document.getElementById('selectedNPSN').value = s.npsn || ''; document.getElementById('npsnInfo').classList.remove('hidden'); } 
     else document.getElementById('npsnInfo').classList.add('hidden');
   }
 
@@ -402,7 +387,7 @@
   function calculateDistance(lat1, lng1, lat2, lng2) { const R=6371e3, p1=lat1*Math.PI/180, p2=lat2*Math.PI/180, dp=(lat2-lat1)*Math.PI/180, dl=(lng2-lng1)*Math.PI/180, a=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2; return R*2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); }
 
   // ==========================================
-  // SUBMIT DATA (BUG FIX: Sekolah Langsung dari Dropdown)
+  // SUBMIT DATA 
   // ==========================================
   async function submitForm() {
     const btn = document.getElementById('submitBtn'), txt = document.getElementById('btnText'), icn = document.getElementById('btnIcon'), spn = document.getElementById('btnSpinner');
@@ -414,13 +399,10 @@
     
     let namaSekolah = '', npsn = '', unit = '', jabatan = '';
     
-    // Validasi & Ambil Data Jika Menggunakan Database (Dropdown Sekolah)
     if (['TK', 'KB', 'TPA', 'SPS', 'PKBM', 'SKB', 'SD', 'SMP'].includes(selectedJenjang)) {
-      
-      // Ambil nilai nama sekolah LANGSUNG DARI DROPDOWN, anti-gagal
       const elSekolah = document.getElementById('sekolahSelect');
       if (elSekolah && elSekolah.selectedIndex > 0) {
-        namaSekolah = elSekolah.options[elSekolah.selectedIndex].value;
+        namaSekolah = elSekolah.options[elSekolah.selectedIndex].text;
       }
       
       npsn = document.getElementById('selectedNPSN') ? document.getElementById('selectedNPSN').value : '';
@@ -434,7 +416,6 @@
       if (!jabatan) return showToast('Tuliskan jabatan', 'error');
       
     } else {
-      // Jika Kategori Dinas
       unit = document.getElementById('unitInput').value.trim(); 
       if (!unit) return showToast('Unit wajib diisi', 'error');
       
@@ -448,26 +429,27 @@
       foto_base64: compressedFoto, latitude: currentPos?.lat||null, longitude: currentPos?.lng||null, 
       accuracy: currentPos?.accuracy||null, jarak, 
       status_lokasi: jarak ? (jarak <= CONFIG.VENUE.radius ? 'VALID' : 'TOO_FAR') : 'NO_GPS', 
-      device_info: navigator.userAgent, offline: !isOnline 
+      device_info: navigator.userAgent, offline: 'NO'
     };
 
     btn.disabled = true; txt.textContent = 'Menyimpan...'; icn.classList.add('hidden'); spn.classList.remove('hidden');
     try {
-      if (!isOnline) { await savePending(payload); showToast('Tersimpan Offline', 'warning'); resetForm(); return; }
-      const res = await fetch(CONFIG.API_URL, { method: 'POST', body: JSON.stringify(payload) }); const result = await res.json();
+      const res = await fetch(CONFIG.API_URL, { method: 'POST', body: JSON.stringify(payload) }); 
+      const result = await res.json();
+      
       if (result.success) { 
-        showToast('Berhasil disimpan!', 'success'); resetForm(); 
+        showToast('Berhasil disimpan!', 'success'); 
+        resetForm(); 
         loadStats(); loadGeoData(); loadRecent(); 
         setTimeout(() => switchTab('rekap'), 1500);
-      } else showToast(result.message, 'error');
-    } catch (e) { await savePending(payload); showToast('Tersimpan Offline', 'warning'); resetForm(); } 
-    finally { btn.disabled = false; txt.textContent = 'Simpan Kehadiran'; icn.classList.remove('hidden'); spn.classList.add('hidden'); }
-  }
-
-  async function syncPending() {
-    const pend = await getPending(); if(pend.length===0) return; showToast(`Sync ${pend.length} data...`, 'info');
-    for (const item of pend) { try { const res = await fetch(CONFIG.API_URL, {method:'POST', body:JSON.stringify(item.data)}); if((await res.json()).success) await removePending(item.id); } catch(e) { break; } }
-    updatePendingCount(); loadStats(); loadGeoData(); loadRecent();
+      } else {
+        showToast(result.message, 'error');
+      }
+    } catch (e) { 
+      showToast('Koneksi terputus. Pastikan internet Anda aktif lalu coba lagi.', 'error'); 
+    } finally { 
+      btn.disabled = false; txt.textContent = 'Simpan Kehadiran'; icn.classList.remove('hidden'); spn.classList.add('hidden'); 
+    }
   }
 
   function resetForm() {
@@ -539,35 +521,32 @@
     ti.innerHTML = `<i data-lucide="${icos[type]}" class="w-5 h-5"></i>`; tm.textContent = msg; t.classList.remove('hidden'); lucide.createIcons();
     setTimeout(() => t.classList.add('hidden'), 4000);
   }
-  
-  function updateConnectionStatus() {
-    isOnline = navigator.onLine; const dot = document.getElementById('statusDot'), txt = document.getElementById('statusText');
-    if(isOnline) { dot.className='w-2 h-2 rounded-full bg-emerald-400'; txt.textContent='Online'; syncPending(); } else { dot.className='w-2 h-2 rounded-full bg-red-400'; txt.textContent='Offline'; }
-  }
 
   // ==========================================
-  // INITIALIZATION & AUTO SHUTDOWN
+  // INITIALIZATION & UI CONTROL (JAM DIHAPUS)
   // ==========================================
   document.addEventListener('DOMContentLoaded', () => {
+    // Tanggal "Sistem Terpadu" kecil di kiri atas kita ambil dari HP pengguna
     document.getElementById('headerDate').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     
     const urlParams = new URLSearchParams(window.location.search);
     const modeAdmin = urlParams.get('mode');
 
+    // Fungsi cek waktu sekarang hanya berfungsi membaca '?mode=tutup' saja
     const cekWaktu = () => {
-      if (modeAdmin === 'buka') { document.getElementById('mainFormSection').classList.remove('hidden'); document.getElementById('closedSection').classList.add('hidden'); return; } 
-      if (modeAdmin === 'tutup') { document.getElementById('mainFormSection').classList.add('hidden'); document.getElementById('closedSection').classList.remove('hidden'); return; }
-
-      const now = new Date(), hour = now.getHours(), minute = now.getMinutes(), time = hour + (minute / 60);
-      if (time < 7.0 || time >= 14.0) { document.getElementById('mainFormSection').classList.add('hidden'); document.getElementById('closedSection').classList.remove('hidden'); } 
-      else { document.getElementById('mainFormSection').classList.remove('hidden'); document.getElementById('closedSection').classList.add('hidden'); }
+      if (modeAdmin === 'tutup') { 
+        document.getElementById('mainFormSection').classList.add('hidden'); 
+        document.getElementById('closedSection').classList.remove('hidden'); 
+      } else { 
+        document.getElementById('mainFormSection').classList.remove('hidden'); 
+        document.getElementById('closedSection').classList.add('hidden'); 
+      }
     };
     
-    cekWaktu(); setInterval(cekWaktu, 60000); 
+    cekWaktu(); // Langsung dipanggil 1x tanpa interval
 
-    lucide.createIcons(); initMap(); loadStats(); loadGeoData(); loadRecent(); updatePendingCount(); getGPS();
-    window.addEventListener('online', updateConnectionStatus); window.addEventListener('offline', updateConnectionStatus);
-    setInterval(() => { if(isOnline) { loadStats(); loadGeoData(); loadRecent(); } }, 30000);
+    lucide.createIcons(); initMap(); loadStats(); loadGeoData(); loadRecent(); getGPS();
+    setInterval(() => { loadStats(); loadGeoData(); loadRecent(); }, 30000);
   });
   </script>
 </body>
