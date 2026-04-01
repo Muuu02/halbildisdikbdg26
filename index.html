@@ -4,58 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#0f172a">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
   <title>Absensi Halal Bihalal Disdik Bandung 2026</title>
-  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3003/3003755.png">
-  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3003/3003755.png">
   
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
-            slate: { 850: '#1e293b', 900: '#0f172a', 950: '#020617' }
-          },
-          fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
-          boxShadow: { 'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.1)', 'glow': '0 0 20px rgba(59, 130, 246, 0.3)' }
-        }
-      }
-    }
-  </script>
   
   <style>
     * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); min-height: 100vh; padding-bottom: 80px; }
     .banner-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%); }
     .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
-    .custom-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px; }
-    
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
     .spinner { border: 2px solid rgba(255, 255, 255, 0.3); border-top-color: white; border-radius: 50%; width: 18px; height: 18px; animation: spin 0.6s linear infinite; }
-    .gps-pulse { animation: gpsPulse 2s infinite; }
-    @keyframes gpsPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); } 50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); } }
-    .photo-upload.has-photo { border-color: #10b981; background: #f0fdf4; }
-    #map { height: 280px; border-radius: 12px; z-index: 1; }
-    .btn-primary { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); transition: all 0.3s ease; }
+    @keyframes spin { to { transform: rotate(360deg); } }
     .section-header { position: relative; padding-left: 12px; }
     .section-header::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 20px; background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%); border-radius: 2px; }
-    
     .tab-content { display: none; animation: fadeIn 0.3s ease; }
     .tab-content.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -75,613 +41,276 @@
     <div class="max-w-3xl mx-auto px-4 py-5">
       <div class="flex items-center gap-4">
         <div class="flex-shrink-0">
-          <div class="w-14 h-14 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center border border-white/20 overflow-hidden p-1.5">
+          <div class="w-14 h-14 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center border border-white/20 p-1.5">
             <img src="https://cdn-icons-png.flaticon.com/512/3003/3003755.png" alt="Logo" class="w-full h-full object-contain">
           </div>
         </div>
         <div class="flex-1 min-w-0">
           <h1 class="text-lg md:text-xl font-bold text-white leading-tight">Halal Bihalal Keluarga Dinas Pendidikan Kota Bandung</h1>
-          <div class="flex items-center gap-2 mt-2">
-            <span class="px-3 py-1 bg-white/10 rounded-md text-sm font-semibold text-blue-100 border border-white/10">Kamis, 2 April 2026</span>
+          <div class="flex items-center mt-2">
+            <span class="px-3 py-1 bg-white/10 rounded-md text-sm font-semibold text-blue-100 border border-white/10">Tahun 2026</span>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <div id="tab-absen" class="tab-content active max-w-3xl mx-auto px-4 py-6 space-y-5">
-    
-    <div id="closedSection" class="hidden text-center">
-      <div class="glass-card rounded-2xl p-8 border-2 border-red-200 bg-red-50/50 shadow-soft">
-        <div class="w-20 h-20 mx-auto bg-red-100 rounded-full flex items-center justify-center mb-4">
-          <i data-lucide="lock" class="w-10 h-10 text-red-500"></i>
-        </div>
-        <h2 class="text-2xl font-bold text-slate-800 mb-2">Absensi Ditutup</h2>
-        <p class="text-slate-600">Sistem absensi saat ini sedang ditutup oleh Admin.</p>
+  <div id="tab-absen" class="tab-content active max-w-3xl mx-auto px-4 py-6">
+    <div class="glass-card rounded-2xl p-6 shadow-sm border border-slate-100">
+      <div class="text-center mb-6">
+        <h2 class="text-xl font-bold text-slate-800">Silakan Pilih Kategori Instansi</h2>
+        <p class="text-sm text-slate-500 mt-1">Klik salah satu tombol di bawah ini untuk mengisi kehadiran.</p>
       </div>
-    </div>
 
-    <div id="mainFormSection" class="space-y-5">
-      
-      <section class="glass-card rounded-2xl p-5 shadow-soft relative z-30">
-        <h2 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Kategori Instansi</h2>
-        <div class="relative" id="categoryDropdownWrapper">
-          <button type="button" onclick="toggleCategoryDropdown()" class="w-full flex items-center justify-between px-4 py-3 border border-slate-300 rounded-xl bg-white focus:ring-2 focus:ring-primary-500 transition-all shadow-sm">
-            <div class="flex items-center gap-3" id="selectedCategoryDisplay">
-              <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400"><i data-lucide="layers" class="w-4 h-4"></i></div>
-              <span class="text-slate-500 font-medium text-sm">-- Pilih Kategori --</span>
-            </div>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-300" id="categoryDropdownIcon"></i>
-          </button>
-          <div id="categoryDropdownMenu" class="hidden absolute left-0 right-0 top-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl max-h-64 overflow-y-auto custom-scrollbar z-50">
-            <div class="p-2 flex flex-col gap-1">
-              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 pt-2 pb-1">PAUD & Layanan</p>
-              <button type="button" onclick="selectCustomCategory('TK', 'baby', 'Taman Kanak-Kanak (TK)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="baby" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">TK</span></button>
-              <button type="button" onclick="selectCustomCategory('KB', 'blocks', 'Kelompok Bermain (KB)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="blocks" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">KB</span></button>
-              <button type="button" onclick="selectCustomCategory('TPA', 'book-open', 'TPA / TPQ')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="book-open" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">TPA</span></button>
-              <button type="button" onclick="selectCustomCategory('SPS', 'heart-handshake', 'Satuan PAUD Sejenis (SPS)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="heart-handshake" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SPS</span></button>
-              <div class="h-px bg-slate-100 my-1"></div>
-              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 pt-2 pb-1">Non Formal & Formal</p>
-              <button type="button" onclick="selectCustomCategory('PKBM', 'users', 'Pusat Kegiatan Belajar (PKBM)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="users" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">PKBM</span></button>
-              <button type="button" onclick="selectCustomCategory('SKB', 'scale', 'Sanggar Kegiatan Belajar (SKB)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="scale" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SKB</span></button>
-              <button type="button" onclick="selectCustomCategory('SD', 'school', 'Sekolah Dasar (SD)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="school" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SD</span></button>
-              <button type="button" onclick="selectCustomCategory('SMP', 'building-2', 'Sekolah Menengah Pertama (SMP)')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary-50 hover:text-primary-700 text-left group"><div class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-primary-100 flex items-center justify-center text-slate-500 group-hover:text-primary-600"><i data-lucide="building-2" class="w-4 h-4"></i></div><span class="font-semibold text-slate-700 text-sm group-hover:text-primary-700">SMP</span></button>
-              <div class="h-px bg-slate-100 my-1"></div>
-              <button type="button" onclick="selectCustomCategory('DINAS', 'landmark', 'Dinas Pendidikan')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-purple-700 text-left group"><div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600"><i data-lucide="landmark" class="w-4 h-4"></i></div><span class="font-bold text-slate-800 text-sm group-hover:text-purple-700">DINAS PENDIDIKAN</span></button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfM9RRoDYZ8bLbD28qWRK5ukH-allirD0f1Ol1yBJrfK4gP8g/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+          <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors"><i data-lucide="school" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Sekolah Dasar (SD)</h3><p class="text-xs text-slate-500">Form Kehadiran SD</p></div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        </a>
 
-      <section id="sekolahSection" class="glass-card rounded-2xl p-5 shadow-soft hidden relative z-20">
-        <h2 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Data Lembaga</h2>
-        <div class="space-y-4">
-          <div>
-            <label class="block text-sm font-medium text-slate-700 mb-2">Pilih <span id="kategoriLabel">Sekolah</span> <span class="text-red-500">*</span></label>
-            <div class="relative">
-              <select id="sekolahSelect" onchange="onSchoolSelect(this.value)" class="custom-select w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 bg-white text-slate-700 cursor-pointer">
-                <option value="">-- Pilih dari Daftar --</option>
-              </select>
-              <div id="schoolLoading" class="hidden absolute right-12 top-1/2 -translate-y-1/2"><div class="spinner border-slate-300 border-t-primary-500"></div></div>
-            </div>
-          </div>
-          <div id="npsnInfo" class="hidden"><div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl p-4"><div class="flex items-start gap-3"><div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i></div><div><p class="text-xs text-emerald-600 font-semibold uppercase">NPSN Terdeteksi</p><p class="text-xl font-bold text-slate-800 mt-1 font-mono" id="npsnDisplay">-</p><input type="hidden" id="selectedNPSN"></div></div></div></div>
-        </div>
-      </section>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSctxOhhab7IWSbbWnOUv4u-W3F8uDQkwVT1jQKvZSz9VG8fnA/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+          <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors"><i data-lucide="building-2" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Sekolah Menengah (SMP)</h3><p class="text-xs text-slate-500">Form Kehadiran SMP</p></div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        </a>
 
-      <section id="unitSection" class="glass-card rounded-2xl p-5 shadow-soft hidden relative z-20">
-        <h2 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Unit/Bidang Dinas</h2>
-        <div><label class="block text-sm font-medium text-slate-700 mb-2">Nama Unit/Bidang <span class="text-red-500">*</span></label><input type="text" id="unitInput" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500" placeholder="Contoh: Bidang Pendidikan Dasar"></div>
-      </section>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiA-R3-wJnjwMMqzysExCKWP-Jnntd6ExOI0Hw31r0opzM_A/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+          <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors"><i data-lucide="users" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">SKB & PKBM</h3><p class="text-xs text-slate-500">Sanggar & Pusat Kegiatan Belajar</p></div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        </a>
 
-      <section class="glass-card rounded-2xl p-5 shadow-soft relative z-10">
-        <h2 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Data Peserta</h2>
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-slate-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
-          <div class="relative"><div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><i data-lucide="user" class="w-5 h-5"></i></div><input type="text" id="namaInput" class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500" placeholder="Masukkan nama lengkap"></div>
-        </div>
-        <div id="jabatanSekolahWrapper" class="hidden mt-4">
-          <label class="block text-sm font-medium text-slate-700 mb-2">Jabatan <span class="text-red-500">*</span></label>
-          <select id="jabatanSekolahSelect" onchange="checkJabatanLainnya(this.value)" class="custom-select w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 bg-white text-slate-700 cursor-pointer">
-            <option value="">-- Pilih Jabatan --</option><option value="Kepala Sekolah">Kepala Sekolah</option><option value="Guru">Guru</option><option value="Layanan Khusus">Layanan Khusus</option><option value="Lainnya">Lainnya...</option>
-          </select>
-          <input type="text" id="jabatanLainnyaInput" class="hidden w-full mt-3 px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500" placeholder="Sebutkan jabatan lainnya...">
-        </div>
-        <div id="jabatanDinasWrapper" class="hidden mt-4">
-          <label class="block text-sm font-medium text-slate-700 mb-2">Jabatan <span class="text-red-500">*</span></label>
-          <input type="text" id="jabatanDinasInput" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500" placeholder="Contoh: Staff Kepegawaian, Pengawas, dll">
-        </div>
-      </section>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYith9MFsCzB5w3Rk8rWwHFfF5gnl_BS8FahJnN0608VEBPA/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+          <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors"><i data-lucide="heart-handshake" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">SPS</h3><p class="text-xs text-slate-500">Satuan PAUD Sejenis</p></div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        </a>
 
-      <section class="glass-card rounded-2xl p-5 shadow-soft">
-        <h2 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Foto Verifikasi</h2>
-        <div id="photoContainer" class="photo-upload border-2 border-dashed border-slate-300 rounded-xl p-6 text-center cursor-pointer bg-white" onclick="document.getElementById('fotoInput').click()">
-          <input type="file" id="fotoInput" accept="image/*" capture="user" class="hidden" onchange="processFoto(this)">
-          <div id="photoPlaceholder"><div class="w-16 h-16 mx-auto mb-3 rounded-full bg-slate-100 flex items-center justify-center"><i data-lucide="camera" class="w-7 h-7 text-slate-400"></i></div><p class="text-sm font-medium text-slate-600">Tap untuk selfie lokasi</p></div>
-          <img id="photoPreview" class="hidden max-h-48 mx-auto rounded-lg shadow-md">
-          <button type="button" id="btnRetake" class="hidden mt-4 text-sm font-medium text-red-500 flex items-center justify-center gap-1.5 mx-auto" onclick="event.stopPropagation(); retakeFoto()"><i data-lucide="refresh-cw" class="w-4 h-4"></i>Ambil Ulang</button>
-        </div>
-      </section>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeLRZaADbbv5upWZDYT2UcusdxN9LdxQ2HsylkubKXDvfd5Q/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+          <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white transition-colors"><i data-lucide="blocks" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Kelompok Bermain (KB)</h3><p class="text-xs text-slate-500">Form Kehadiran KB</p></div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        </a>
 
-      <section class="glass-card rounded-2xl p-5 shadow-soft">
-        <h2 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Lokasi GPS</h2>
-        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div id="gpsIcon" class="w-12 h-12 rounded-xl bg-slate-200 flex items-center justify-center text-slate-500"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
-              <div><p class="text-sm font-semibold text-slate-700">Status Koordinat</p><p class="text-xs text-slate-500" id="gpsStatus">Menunggu deteksi...</p></div>
-            </div>
-            <button type="button" onclick="getGPS()" class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-sm font-medium text-slate-700 flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3 h-3"></i>Refresh</button>
-          </div>
-          <div id="gpsDetail" class="hidden mt-4 pt-4 border-t border-slate-200"><div class="grid grid-cols-3 gap-2"><div class="bg-white rounded-lg p-2 border border-slate-200 text-center"><p class="text-[10px] text-slate-400">Lat</p><p class="text-xs font-mono font-bold" id="latVal">-</p></div><div class="bg-white rounded-lg p-2 border border-slate-200 text-center"><p class="text-[10px] text-slate-400">Lng</p><p class="text-xs font-mono font-bold" id="lngVal">-</p></div><div class="bg-white rounded-lg p-2 border border-slate-200 text-center"><p class="text-[10px] text-slate-400">Akurasi</p><p class="text-xs font-mono font-bold" id="accVal">-</p></div></div></div>
-          <div id="radiusAlert" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 font-medium">Di Luar Radius Venue (150m)</div>
-          <div id="radiusSuccess" class="hidden mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-700 font-medium">Lokasi Valid (Dalam radius)</div>
-        </div>
-      </section>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRPEMjLPk8dEk07lal6xWGYi2rSylVEMKDslOls10KEkc9tQ/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
+          <div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-lg flex items-center justify-center group-hover:bg-pink-600 group-hover:text-white transition-colors"><i data-lucide="baby" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Taman Kanak-Kanak (TK)</h3><p class="text-xs text-slate-500">Form Kehadiran TK</p></div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        </a>
 
-      <button type="button" id="submitBtn" onclick="submitForm()" class="btn-primary w-full text-white font-bold py-4 rounded-xl shadow-glow flex items-center justify-center gap-2">
-        <i data-lucide="check-circle" class="w-5 h-5" id="btnIcon"></i><span id="btnText">Simpan Kehadiran</span><div id="btnSpinner" class="spinner hidden"></div>
-      </button>
-
-      <div id="emergencySection" class="mt-6 pt-5 border-t border-slate-200 text-center hidden">
-        <p class="text-[11px] text-slate-500 mb-3 font-medium">Gagal menyimpan atau terkendala koneksi/kamera?</p>
-        <a href="https://forms.gle/LINK_GFORM_ANDA_DISINI" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-bold text-red-600 bg-red-50 border border-red-200 rounded-xl hover:bg-red-100 transition-colors w-full">
-          <i data-lucide="life-buoy" class="w-4 h-4"></i> Gunakan Absensi Darurat
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2bcKfJn64C2HMmE4piUAXqQgCuX6v8zjR90gvSK7udlcfow/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-purple-50 border border-purple-200 rounded-xl hover:border-purple-400 hover:shadow-md transition-all group md:col-span-2">
+          <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors"><i data-lucide="landmark" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Dinas Pendidikan / Tamu Undangan</h3><p class="text-xs text-slate-500">Pegawai Dinas & Tamu</p></div>
+          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
         </a>
       </div>
-
-    </div>
-  </div>
-
-  <div id="tab-statistik" class="tab-content max-w-3xl mx-auto px-4 py-6">
-    <div class="glass-card rounded-2xl p-5 shadow-soft mb-5">
-      <h3 class="section-header text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Statistik Kehadiran</h3>
-      
-      <div class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-5">
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">TK</p><p class="text-2xl font-black text-slate-800" id="statTK">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">KB</p><p class="text-2xl font-black text-slate-800" id="statKB">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">TPA</p><p class="text-2xl font-black text-slate-800" id="statTPA">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">SPS</p><p class="text-2xl font-black text-slate-800" id="statSPS">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">PKBM</p><p class="text-2xl font-black text-slate-800" id="statPKBM">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">SKB</p><p class="text-2xl font-black text-slate-800" id="statSKB">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">SD</p><p class="text-2xl font-black text-slate-800" id="statSD">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">SMP</p><p class="text-2xl font-black text-slate-800" id="statSMP">0</p></div>
-        <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 text-center"><p class="text-[10px] text-slate-500 font-bold uppercase mb-1">DINAS</p><p class="text-2xl font-black text-slate-800" id="statDINAS">0</p></div>
-      </div>
-      
-      <div class="bg-gradient-to-r from-blue-700 to-blue-900 rounded-xl p-4 shadow-lg text-white flex items-center justify-between">
-        <div class="flex items-center gap-3"><i data-lucide="users" class="w-8 h-8 opacity-80"></i><div><p class="text-xs text-blue-200 uppercase tracking-wider">Total Kehadiran</p><p class="text-3xl font-black" id="statTotal">0</p></div></div>
-      </div>
-    </div>
-    
-    <div class="glass-card rounded-2xl p-5 shadow-soft">
-      <div class="flex items-center gap-2 mb-3"><i data-lucide="map" class="w-5 h-5 text-slate-500"></i><h4 class="text-sm font-semibold text-slate-700">Sebaran Lokasi</h4></div>
-      <div id="map" class="bg-slate-100 rounded-xl border border-slate-200 overflow-hidden relative z-0"></div>
     </div>
   </div>
 
   <div id="tab-rekap" class="tab-content max-w-3xl mx-auto px-4 py-6">
     <div class="glass-card rounded-2xl p-5 shadow-soft">
       <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-2"><i data-lucide="list-checks" class="w-5 h-5 text-primary-600"></i><h4 class="text-sm font-semibold text-slate-800">Daftar Kehadiran</h4></div>
-        <button onclick="loadSemuaData()" class="text-xs bg-primary-50 text-primary-700 px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-primary-100 transition"><i data-lucide="refresh-cw" class="w-3 h-3"></i> Refresh Data</button>
+        <div class="flex items-center gap-2">
+          <i data-lucide="list-checks" class="w-5 h-5 text-blue-600"></i>
+          <h4 class="text-sm font-semibold text-slate-800">Daftar Kehadiran</h4>
+        </div>
+        <button onclick="loadSemuaData()" class="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-100 transition">
+          <i data-lucide="refresh-cw" class="w-3 h-3"></i> Refresh Data
+        </button>
       </div>
       
       <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 space-y-3">
         <div class="relative">
           <div class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i data-lucide="search" class="w-4 h-4"></i></div>
-          <input type="text" id="filterPencarian" onkeyup="terapkanFilter()" class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500" placeholder="Cari nama atau instansi...">
+          <input type="text" id="filterPencarian" onkeyup="terapkanFilter()" class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500" placeholder="Cari nama atau instansi...">
         </div>
         <div class="flex items-center gap-2">
           <div class="flex-1">
             <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Dari Jam</p>
-            <input type="time" id="filterWaktuMulai" onchange="terapkanFilter()" class="w-full px-2 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500">
+            <input type="time" id="filterWaktuMulai" onchange="terapkanFilter()" class="w-full px-2 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
           </div>
           <div class="flex-1">
             <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Sampai Jam</p>
-            <input type="time" id="filterWaktuAkhir" onchange="terapkanFilter()" class="w-full px-2 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500">
+            <input type="time" id="filterWaktuAkhir" onchange="terapkanFilter()" class="w-full px-2 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
           </div>
           <div class="pt-5">
             <button onclick="resetFilter()" class="p-2 bg-slate-200 text-slate-600 rounded-lg hover:bg-slate-300 transition" title="Reset Filter"><i data-lucide="x" class="w-4 h-4"></i></button>
           </div>
         </div>
         <div class="text-right">
-          <span id="totalDataTampil" class="text-xs font-bold text-primary-600">Total: 0 data</span>
+          <span id="totalDataTampil" class="text-xs font-bold text-blue-600">Total: 0 data</span>
         </div>
       </div>
       
       <div class="overflow-hidden border border-slate-200 rounded-xl">
-        <div class="overflow-x-auto max-h-[500px] custom-scrollbar">
-          <table class="w-full text-left bg-white relative">
-            <thead class="sticky top-0 z-10"><tr class="bg-slate-100 text-slate-500 text-[10px] uppercase tracking-wider shadow-sm"><th class="p-3 w-10 text-center">No</th><th class="p-3">Waktu & Nama</th><th class="p-3">Instansi</th><th class="p-3 text-right">Status</th></tr></thead>
+        <div class="overflow-x-auto max-h-[500px] custom-scrollbar bg-white">
+          <table class="w-full text-left relative">
+            <thead class="sticky top-0 z-10">
+              <tr class="bg-slate-100 text-slate-500 text-[10px] uppercase tracking-wider shadow-sm">
+                <th class="p-3 w-10 text-center">No</th>
+                <th class="p-3">Waktu & Nama</th>
+                <th class="p-3">Instansi & Kategori</th>
+              </tr>
+            </thead>
             <tbody id="rekapTableBody" class="text-sm divide-y divide-slate-100">
-              <tr><td colspan="4" class="p-8 text-center text-slate-400"><div class="spinner border-slate-300 border-t-primary-500 mx-auto mb-2"></div>Memuat data...</td></tr>
+              <tr><td colspan="3" class="p-8 text-center text-slate-400 font-medium">Klik Refresh Data untuk memuat.</td></tr>
             </tbody>
           </table>
         </div>
       </div>
+
     </div>
   </div>
 
   <nav class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-slate-200 z-[100] pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
     <div class="max-w-3xl mx-auto flex justify-around">
-      <button id="btn-tab-absen" onclick="switchTab('absen')" class="flex-1 py-3 flex flex-col items-center justify-center text-primary-600 transition-colors">
+      <button id="btn-tab-absen" onclick="switchTab('absen')" class="flex-1 py-3 flex flex-col items-center justify-center text-blue-600 transition-colors">
         <i data-lucide="edit-3" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold tracking-wide uppercase">Absen</span>
       </button>
-      <button id="btn-tab-statistik" onclick="switchTab('statistik')" class="flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-primary-500 transition-colors">
-        <i data-lucide="pie-chart" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold tracking-wide uppercase">Statistik</span>
-      </button>
-      <button id="btn-tab-rekap" onclick="switchTab('rekap')" class="flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-primary-500 transition-colors">
+      <button id="btn-tab-rekap" onclick="switchTab('rekap')" class="flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 transition-colors">
         <i data-lucide="users" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold tracking-wide uppercase">Rekap</span>
       </button>
     </div>
   </nav>
 
-  <div id="toast" class="fixed top-20 right-4 z-[120] hidden max-w-sm"><div id="toastContent" class="px-4 py-3 rounded-xl shadow-lg text-white text-sm font-medium flex items-start gap-3"><span id="toastIcon" class="mt-0.5"></span><span id="toastMessage" class="flex-1"></span></div></div>
-
   <script>
-  // ==========================================
-  // CONFIGURATION 
-  // ==========================================
-  const CONFIG = {
-    API_URL: 'https://script.google.com/macros/s/AKfycbzFS1Fyhse4NjTKzmuVArR14lIRmj9uMLW-VX41hO5C2UQ_js5G3lL-pck7rEe_0hElQA/exec', 
-    VENUE: { lat: -6.9001204, lng: 107.6259654, radius: 150 },
-    FOTO: { maxWidth: 1024, maxHeight: 1024, quality: 0.7 }
-  };
+    // ---------------------------------------------------------
+    // GANTI LINK DI BAWAH INI DENGAN LINK APP SCRIPT (Code.gs) ANDA YANG BARU
+    // ---------------------------------------------------------
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz_XXXXXXXX/exec'; 
 
-  // STATE
-  let currentPos = null; let selectedJenjang = ''; let compressedFoto = null; let map = null; let markers = []; let schoolsData = [];
-  let semuaDataRekap = []; // Array penampung data rekap untuk fitur filter
+    let semuaDataRekap = []; // Array memori penampung data rekap
 
-  // ==========================================
-  // TAB & DROPDOWN LOGIC
-  // ==========================================
-  function switchTab(tabName) {
-    document.querySelectorAll('.tab-content').forEach(el => { el.classList.remove('active'); });
-    document.getElementById('tab-' + tabName).classList.add('active');
-    ['absen', 'statistik', 'rekap'].forEach(t => {
-      const btn = document.getElementById('btn-tab-' + t);
-      if(t === tabName) { btn.classList.remove('text-slate-400'); btn.classList.add('text-primary-600'); } 
-      else { btn.classList.add('text-slate-400'); btn.classList.remove('text-primary-600'); }
-    });
-    if(tabName === 'statistik' && map) { setTimeout(() => { map.invalidateSize(); }, 200); }
-  }
-
-  function toggleCategoryDropdown() {
-    document.getElementById('categoryDropdownMenu').classList.toggle('hidden');
-    document.getElementById('categoryDropdownIcon').classList.toggle('rotate-180');
-  }
-
-  function selectCustomCategory(value, icon, label) {
-    document.getElementById('selectedCategoryDisplay').innerHTML = `
-      <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600"><i data-lucide="${icon}" class="w-4 h-4"></i></div>
-      <span class="text-slate-800 font-bold text-sm">${label}</span>
-    `;
-    lucide.createIcons();
-    toggleCategoryDropdown();
-    selectJenjang(value);
-  }
-
-  document.addEventListener('click', (e) => {
-    const wrapper = document.getElementById('categoryDropdownWrapper');
-    if (wrapper && !wrapper.contains(e.target)) {
-      document.getElementById('categoryDropdownMenu').classList.add('hidden');
-      document.getElementById('categoryDropdownIcon').classList.remove('rotate-180');
+    // Fungsi Pindah Tab
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tabName).classList.add('active');
+      
+      const btnAbsen = document.getElementById('btn-tab-absen');
+      const btnRekap = document.getElementById('btn-tab-rekap');
+      
+      if(tabName === 'absen') {
+        btnAbsen.className = 'flex-1 py-3 flex flex-col items-center justify-center text-blue-600 transition-colors';
+        btnRekap.className = 'flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 transition-colors';
+      } else {
+        btnRekap.className = 'flex-1 py-3 flex flex-col items-center justify-center text-blue-600 transition-colors';
+        btnAbsen.className = 'flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 transition-colors';
+        if (semuaDataRekap.length === 0) loadSemuaData(); // Otomatis load data saat buka tab rekap
+      }
     }
-  });
 
-  // ==========================================
-  // FORM LOGIC
-  // ==========================================
-  async function selectJenjang(jenjang) {
-    selectedJenjang = jenjang; const pakaiDB = ['TK', 'KB', 'TPA', 'SPS', 'PKBM', 'SKB', 'SD', 'SMP'].includes(jenjang);
-    document.getElementById('npsnInfo').classList.add('hidden'); document.getElementById('selectedNPSN').value = '';
-    document.getElementById('jabatanSekolahSelect').value = ''; document.getElementById('jabatanLainnyaInput').classList.add('hidden'); document.getElementById('jabatanDinasInput').value = '';
-    
-    if (pakaiDB) {
-      document.getElementById('sekolahSection').classList.remove('hidden'); document.getElementById('unitSection').classList.add('hidden');
-      document.getElementById('jabatanSekolahWrapper').classList.remove('hidden'); document.getElementById('jabatanDinasWrapper').classList.add('hidden');
-      document.getElementById('kategoriLabel').textContent = jenjang === 'SPS' ? 'Lembaga SPS' : jenjang === 'PKBM' ? 'PKBM' : jenjang === 'SKB' ? 'Satuan Kerja' : jenjang === 'TPA' ? 'TPA/TPQ' : jenjang === 'KB' ? 'Kelompok Bermain' : 'Sekolah';
-      await loadSchoolsDropdown(jenjang);
-    } else {
-      document.getElementById('sekolahSection').classList.add('hidden'); document.getElementById('unitSection').classList.remove('hidden');
-      document.getElementById('jabatanSekolahWrapper').classList.add('hidden'); document.getElementById('jabatanDinasWrapper').classList.remove('hidden');
-    }
-  }
-
-  function checkJabatanLainnya(val) { document.getElementById('jabatanLainnyaInput').classList.toggle('hidden', val !== 'Lainnya'); }
-
-  async function loadSchoolsDropdown(jenjang) {
-    const sel = document.getElementById('sekolahSelect'), load = document.getElementById('schoolLoading');
-    sel.innerHTML = '<option value="">-- Memuat Data... --</option>'; sel.disabled = true; load.classList.remove('hidden');
-    try {
-      const res = await fetch(`${CONFIG.API_URL}?action=schools&jenjang=${jenjang}`); const data = await res.json();
-      if (data.success) { schoolsData = data.schools; sel.innerHTML = `<option value="">-- Pilih ${document.getElementById('kategoriLabel').textContent} --</option>`; data.schools.forEach(s => sel.innerHTML += `<option value="${s.nama}">${s.nama}</option>`); }
-    } catch(e) {} finally { sel.disabled = false; load.classList.add('hidden'); }
-  }
-
-  function onSchoolSelect(nama) {
-    const s = schoolsData.find(x => x.nama === nama);
-    if (s) { document.getElementById('npsnDisplay').textContent = s.npsn || '-'; document.getElementById('selectedNPSN').value = s.npsn || ''; document.getElementById('npsnInfo').classList.remove('hidden'); } 
-    else document.getElementById('npsnInfo').classList.add('hidden');
-  }
-
-  // ==========================================
-  // KAMERA & GPS
-  // ==========================================
-  async function processFoto(input) {
-    const file = input.files[0]; if (!file) return;
-    try {
-      const img = await createImageBitmap(file); let w = img.width, h = img.height; const max = Math.max(CONFIG.FOTO.maxWidth, CONFIG.FOTO.maxHeight);
-      if (w > h && w > max) { h = h * max / w; w = max; } else if (h > max) { w = w * max / h; h = max; }
-      const cvs = document.createElement('canvas'); cvs.width = w; cvs.height = h; cvs.getContext('2d').drawImage(img, 0, 0, w, h);
-      compressedFoto = cvs.toDataURL('image/jpeg', CONFIG.FOTO.quality);
-      document.getElementById('photoPreview').src = compressedFoto; document.getElementById('photoPreview').classList.remove('hidden'); document.getElementById('photoPlaceholder').classList.add('hidden'); document.getElementById('photoContainer').classList.add('has-photo'); document.getElementById('btnRetake').classList.remove('hidden');
-    } catch(e) { showToast('Gagal proses foto', 'error'); }
-  }
-  function retakeFoto() { compressedFoto = null; document.getElementById('photoPreview').classList.add('hidden'); document.getElementById('photoPlaceholder').classList.remove('hidden'); document.getElementById('photoContainer').classList.remove('has-photo'); document.getElementById('btnRetake').classList.add('hidden'); document.getElementById('fotoInput').value = ''; }
-
-  function getGPS() {
-    const s = document.getElementById('gpsStatus'), i = document.getElementById('gpsIcon'), d = document.getElementById('gpsDetail');
-    s.textContent = 'Mendeteksi...'; i.className = 'w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center text-primary-600 gps-pulse'; d.classList.add('hidden'); document.getElementById('radiusAlert').classList.add('hidden'); document.getElementById('radiusSuccess').classList.add('hidden');
-    if (!navigator.geolocation) { s.textContent = 'GPS tak didukung'; return; }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        currentPos = { lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy };
-        document.getElementById('latVal').textContent = currentPos.lat.toFixed(6); document.getElementById('lngVal').textContent = currentPos.lng.toFixed(6); document.getElementById('accVal').textContent = `±${Math.round(currentPos.accuracy)}m`; d.classList.remove('hidden');
-        const dist = calculateDistance(currentPos.lat, currentPos.lng, CONFIG.VENUE.lat, CONFIG.VENUE.lng);
+    // Fungsi Tarik Data dari Code.gs
+    async function loadSemuaData() {
+      const tbody = document.getElementById('rekapTableBody');
+      tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-slate-400"><div class="spinner border-slate-300 border-t-blue-600 mx-auto mb-3"></div><p class="text-sm">Menarik data dari server...</p></td></tr>';
+      
+      try {
+        const res = await fetch(`${API_URL}?action=recent`); 
+        const data = await res.json();
         
-        if (dist <= CONFIG.VENUE.radius) { 
-          s.textContent = `Valid (${Math.round(dist)}m)`; s.className = 'text-xs text-emerald-600 font-bold'; i.className = 'w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600'; document.getElementById('radiusSuccess').classList.remove('hidden'); 
-          // Tampilkan Tombol Darurat jika masuk area
-          document.getElementById('emergencySection').classList.remove('hidden');
-        } else { 
-          s.textContent = `Luar area (${Math.round(dist)}m)`; s.className = 'text-xs text-red-600 font-bold'; i.className = 'w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-500'; document.getElementById('radiusAlert').classList.remove('hidden'); 
-          // Sembunyikan Tombol Darurat jika di luar area
-          document.getElementById('emergencySection').classList.add('hidden');
+        if (data && data.length > 0) {
+          semuaDataRekap = data;
+          terapkanFilter();
+        } else {
+          semuaDataRekap = [];
+          tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-slate-500">Belum ada data absensi.</td></tr>';
+          document.getElementById('totalDataTampil').textContent = 'Total: 0 data';
         }
-      }, () => { s.textContent = 'Gagal'; s.className = 'text-xs text-red-600'; i.className = 'w-12 h-12 rounded-xl bg-yellow-100 flex items-center justify-center text-yellow-600'; }, { enableHighAccuracy: true, timeout: 15000 }
-    );
-  }
-  function calculateDistance(lat1, lng1, lat2, lng2) { const R=6371e3, p1=lat1*Math.PI/180, p2=lat2*Math.PI/180, dp=(lat2-lat1)*Math.PI/180, dl=(lng2-lng1)*Math.PI/180, a=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2; return R*2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); }
-
-  // ==========================================
-  // SUBMIT DATA (DIPERBARUI DENGAN FOTO WAJIB & STATUS GPS)
-  // ==========================================
-  async function submitForm() {
-    const btn = document.getElementById('submitBtn'), txt = document.getElementById('btnText'), icn = document.getElementById('btnIcon'), spn = document.getElementById('btnSpinner');
-    
-    if (!selectedJenjang) return showToast('Pilih kategori instansi dulu', 'error');
-    const nama = document.getElementById('namaInput').value.trim(); 
-    if (!nama) return showToast('Nama wajib diisi', 'error');
-    
-    // --- VALIDASI FOTO WAJIB ---
-    if (!compressedFoto) return showToast('Harap ambil foto selfie terlebih dahulu!', 'error');
-
-    // --- LOGIKA GPS (TIDAK MEMBLOKIR) ---
-    let jarak = 0;
-    let statusLokasi = 'TIDAK TERDETEKSI';
-    if (currentPos) {
-      jarak = calculateDistance(currentPos.lat, currentPos.lng, CONFIG.VENUE.lat, CONFIG.VENUE.lng);
-      statusLokasi = (jarak <= CONFIG.VENUE.radius) ? 'VALID' : 'TIDAK VALID';
-    } else {
-      statusLokasi = 'TIDAK VALID (GPS OFF)';
-    }
-
-    // --- PENGAMBILAN DATA STRUKTUR ASLI ANDA ---
-    let namaSekolah = '', npsn = '', unit = '', jabatan = '';
-    
-    if (['TK', 'KB', 'TPA', 'SPS', 'PKBM', 'SKB', 'SD', 'SMP'].includes(selectedJenjang)) {
-      const elSekolah = document.getElementById('sekolahSelect');
-      if (elSekolah && elSekolah.selectedIndex > 0) {
-        namaSekolah = elSekolah.options[elSekolah.selectedIndex].text;
+      } catch (e) { 
+        tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-red-500 font-medium">Gagal memuat rekap. Periksa koneksi internet Anda.</td></tr>'; 
       }
-      npsn = document.getElementById('selectedNPSN') ? document.getElementById('selectedNPSN').value : '';
-      if (!namaSekolah || namaSekolah.trim() === '') return showToast('Pilih sekolah/lembaga', 'error');
-      
-      const j = document.getElementById('jabatanSekolahSelect').value; 
-      if (!j) return showToast('Jabatan wajib dipilih', 'error');
-      jabatan = j === 'Lainnya' ? document.getElementById('jabatanLainnyaInput').value.trim() : j; 
-      if (!jabatan) return showToast('Tuliskan jabatan', 'error');
-    } else {
-      unit = document.getElementById('unitInput').value.trim(); 
-      if (!unit) return showToast('Unit wajib diisi', 'error');
-      jabatan = document.getElementById('jabatanDinasInput').value.trim(); 
-      if (!jabatan) return showToast('Jabatan wajib diisi', 'error');
     }
 
-    const payload = { 
-      nama, jenjang: selectedJenjang, nama_sekolah: namaSekolah, npsn, unit, jabatan, 
-      foto_base64: compressedFoto, latitude: currentPos?.lat||null, longitude: currentPos?.lng||null, 
-      accuracy: currentPos?.accuracy||null, jarak: Math.round(jarak), 
-      status_lokasi: statusLokasi, // MENGIRIM STATUS LOKASI
-      device_info: navigator.userAgent, offline: 'NO'
-    };
-
-    btn.disabled = true; txt.textContent = 'Menyimpan...'; icn.classList.add('hidden'); spn.classList.remove('hidden');
-    try {
-      const res = await fetch(CONFIG.API_URL, { method: 'POST', body: JSON.stringify(payload) }); 
-      const result = await res.json();
+    // Fungsi Filter Data
+    function terapkanFilter() {
+      const teksCari = document.getElementById('filterPencarian').value.toLowerCase();
+      const waktuMulai = document.getElementById('filterWaktuMulai').value;
+      const waktuAkhir = document.getElementById('filterWaktuAkhir').value;
       
-      if (result.success) { 
-        showToast('Berhasil disimpan!', 'success'); 
-        resetForm(); 
-        loadStats(); loadGeoData(); 
-        loadSemuaData(); // Memuat data rekap filter
-        setTimeout(() => switchTab('rekap'), 1500);
-      } else {
-        showToast(result.message, 'error');
-      }
-    } catch (e) { 
-      showToast('Koneksi terputus. Pastikan internet Anda aktif lalu coba lagi.', 'error'); 
-    } finally { 
-      btn.disabled = false; txt.textContent = 'Simpan Kehadiran'; icn.classList.remove('hidden'); spn.classList.add('hidden'); 
-    }
-  }
-
-  function resetForm() {
-    document.getElementById('namaInput').value = ''; document.getElementById('unitInput').value = ''; document.getElementById('sekolahSelect').innerHTML = '<option value="">-- Pilih --</option>';
-    document.getElementById('jabatanSekolahSelect').value = ''; document.getElementById('jabatanLainnyaInput').value = ''; document.getElementById('jabatanDinasInput').value = '';
-    
-    document.getElementById('selectedCategoryDisplay').innerHTML = `<div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400"><i data-lucide="layers" class="w-4 h-4"></i></div><span class="text-slate-500 font-medium text-sm">-- Pilih Kategori --</span>`;
-    lucide.createIcons();
-    
-    selectedJenjang = ''; checkJabatanLainnya('');
-    document.getElementById('sekolahSection').classList.add('hidden'); document.getElementById('unitSection').classList.add('hidden'); document.getElementById('jabatanSekolahWrapper').classList.add('hidden'); document.getElementById('jabatanDinasWrapper').classList.add('hidden'); document.getElementById('npsnInfo').classList.add('hidden');
-    retakeFoto(); getGPS();
-  }
-
-  // ==========================================
-  // DATA FETCHING STATS & MAP
-  // ==========================================
-  async function loadStats() {
-    try {
-      const r = await fetch(`${CONFIG.API_URL}?action=stats`); const s = await r.json();
-      ['TK','KB','TPA','SPS','PKBM','SKB','SD','SMP','DINAS','Total'].forEach(k => {
-        const el = document.getElementById('stat' + k); if(el) el.textContent = s[k] || s[k.toLowerCase()] || 0;
+      const dataTersaring = semuaDataRekap.filter(item => {
+        const nama = (item.nama || '').toLowerCase();
+        const instansi = (item.instansi || '').toLowerCase();
+        const cocokTeks = nama.includes(teksCari) || instansi.includes(teksCari);
+        
+        let cocokWaktu = true;
+        if (waktuMulai || waktuAkhir) {
+          const jamData = new Date(item.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }); 
+          if (waktuMulai && jamData < waktuMulai) cocokWaktu = false;
+          if (waktuAkhir && jamData > waktuAkhir) cocokWaktu = false;
+        }
+        
+        return cocokTeks && cocokWaktu;
       });
-    } catch (e) {}
-  }
-  
-  async function loadGeoData() {
-    try {
-      const r = await fetch(`${CONFIG.API_URL}?action=geo`); const d = await r.json();
-      markers.forEach(m => map.removeLayer(m)); markers = [];
-      d.forEach(i => {
-        const m = L.circleMarker([i.lat, i.lng], { radius:5, fillColor: i.status_lokasi==='VALID'?'#10b981':'#ef4444', color:'#fff', weight:2, fillOpacity:0.8 }).addTo(map);
-        m.bindPopup(`<b>${i.nama}</b><br>${i.nama_sekolah||i.jenjang}`); markers.push(m);
+      
+      renderTabel(dataTersaring);
+    }
+
+    // Fungsi Reset Filter
+    function resetFilter() {
+      document.getElementById('filterPencarian').value = '';
+      document.getElementById('filterWaktuMulai').value = '';
+      document.getElementById('filterWaktuAkhir').value = '';
+      terapkanFilter();
+    }
+
+    // Fungsi Render HTML Tabel
+    function renderTabel(data) {
+      const tbody = document.getElementById('rekapTableBody');
+      document.getElementById('totalDataTampil').textContent = `Total: ${data.length} data`;
+      
+      if (data.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-slate-500 font-medium">Tidak ada data yang cocok.</td></tr>';
+        return;
+      }
+
+      // Auto Sort: Paling terbaru (paling atas)
+      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      
+      tbody.innerHTML = '';
+      const fragment = document.createDocumentFragment();
+      
+      data.forEach((item, index) => {
+        // Cek apakah tanggal valid
+        let timeStr = '-';
+        if(item.timestamp) {
+           const d = new Date(item.timestamp);
+           if (!isNaN(d.getTime())) {
+             timeStr = d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+           }
+        }
+        
+        const instansi = item.instansi ? item.instansi : '-'; 
+        const jabatan = item.jabatan ? item.jabatan : '-';
+        const kategori = item.kategori ? item.kategori : '-'; // Diambil dari nama Sheet
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition-colors border-b border-slate-100";
+        tr.innerHTML = `
+          <td class="p-3 text-xs text-slate-400 font-bold text-center align-top">${index + 1}</td>
+          <td class="p-3 align-top">
+            <div class="flex flex-col">
+              <span class="text-[10px] font-bold text-blue-600 mb-0.5">${timeStr} WIB</span>
+              <span class="font-bold text-slate-800 leading-tight">${item.nama}</span>
+              <span class="text-[10px] text-slate-500 uppercase mt-0.5">${jabatan}</span>
+            </div>
+          </td>
+          <td class="p-3 align-top">
+            <p class="text-xs text-slate-700 font-medium leading-tight">${instansi}</p>
+            <span class="inline-block mt-1 px-1.5 py-0.5 bg-indigo-50 text-indigo-600 rounded text-[9px] font-bold tracking-wider">${kategori}</span>
+          </td>
+        `;
+        fragment.appendChild(tr);
       });
-    } catch (e) {}
-  }
-
-  // ==========================================
-  // FUNGSI REKAP, FILTER, SORTING TERBARU
-  // ==========================================
-  async function loadSemuaData() {
-    const tbody = document.getElementById('rekapTableBody');
-    tbody.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-400"><div class="spinner border-slate-300 border-t-primary-500 mx-auto mb-2"></div>Memuat seluruh data...</td></tr>';
-    
-    try {
-      // Pastikan Google Script Anda di-setting return full data, bukan limit 10
-      const res = await fetch(`${CONFIG.API_URL}?action=recent&jenjang=all`); 
-      const data = await res.json();
       
-      if (data && data.length > 0) {
-        semuaDataRekap = data;
-        terapkanFilter();
-      } else {
-        semuaDataRekap = [];
-        tbody.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-500">Belum ada data absensi.</td></tr>';
-        document.getElementById('totalDataTampil').textContent = 'Total: 0 data';
-      }
-    } catch (e) { 
-      tbody.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-red-500">Gagal memuat rekap. Periksa koneksi internet.</td></tr>'; 
-    }
-  }
-
-  function terapkanFilter() {
-    const teksCari = document.getElementById('filterPencarian').value.toLowerCase();
-    const waktuMulai = document.getElementById('filterWaktuMulai').value;
-    const waktuAkhir = document.getElementById('filterWaktuAkhir').value;
-    
-    const dataTersaring = semuaDataRekap.filter(item => {
-      const nama = (item.nama || '').toLowerCase();
-      const instansi = (item.nama_sekolah || item.unit || '').toLowerCase();
-      const cocokTeks = nama.includes(teksCari) || instansi.includes(teksCari);
-      
-      let cocokWaktu = true;
-      if (waktuMulai || waktuAkhir) {
-        const jamData = new Date(item.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }); 
-        if (waktuMulai && jamData < waktuMulai) cocokWaktu = false;
-        if (waktuAkhir && jamData > waktuAkhir) cocokWaktu = false;
-      }
-      
-      return cocokTeks && cocokWaktu;
-    });
-    
-    renderTabel(dataTersaring);
-  }
-
-  function resetFilter() {
-    document.getElementById('filterPencarian').value = '';
-    document.getElementById('filterWaktuMulai').value = '';
-    document.getElementById('filterWaktuAkhir').value = '';
-    terapkanFilter();
-  }
-
-  function renderTabel(data) {
-    const tbody = document.getElementById('rekapTableBody');
-    document.getElementById('totalDataTampil').textContent = `Total: ${data.length} data`;
-    
-    if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-500">Tidak ada data yang cocok dengan filter.</td></tr>';
-      return;
+      tbody.appendChild(fragment);
     }
 
-    // AUTO SORT: Paling terbaru (paling atas)
-    data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-    
-    tbody.innerHTML = '';
-    const fragment = document.createDocumentFragment();
-    
-    data.forEach((item, index) => {
-      const timeStr = new Date(item.timestamp).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-      const instansi = item.nama_sekolah ? item.nama_sekolah : (item.unit ? item.unit : '-'); 
-      const jabatan = item.jabatan ? item.jabatan : '-';
-      
-      // Deteksi warna untuk Status
-      const statusLokasi = item.status_lokasi || 'TIDAK VALID';
-      const isVal = statusLokasi === 'VALID';
-      const statusClass = isVal 
-        ? "bg-emerald-100 text-emerald-700 border-emerald-200" 
-        : "bg-red-100 text-red-700 border-red-200";
-
-      const tr = document.createElement('tr');
-      tr.className = "hover:bg-slate-50 transition-colors border-b border-slate-100";
-      tr.innerHTML = `
-        <td class="p-3 text-xs text-slate-400 font-medium text-center align-top">${index + 1}</td>
-        <td class="p-3 align-top">
-          <div class="flex flex-col">
-            <span class="text-[10px] font-bold text-slate-400 mb-0.5">${timeStr} WIB</span>
-            <span class="font-bold text-slate-800 leading-tight">${item.nama}</span>
-            <span class="text-[10px] text-slate-500 uppercase mt-0.5">${jabatan}</span>
-          </div>
-        </td>
-        <td class="p-3 align-top">
-          <p class="text-xs text-slate-700 font-medium leading-tight">${instansi}</p>
-          <span class="inline-block mt-1 px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded text-[9px] font-bold tracking-wider">${item.jenjang}</span>
-        </td>
-        <td class="p-3 text-right align-top">
-          <span class="inline-block px-2 py-1 rounded-lg border text-[9px] font-black ${statusClass}">
-            ${statusLokasi}
-          </span>
-        </td>
-      `;
-      fragment.appendChild(tr);
+    // Inisialisasi awal
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('headerDate').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      lucide.createIcons();
     });
-    
-    tbody.appendChild(fragment);
-  }
-
-  // ==========================================
-  // INITIALIZATION
-  // ==========================================
-  function initMap() {
-    map = L.map('map').setView([CONFIG.VENUE.lat, CONFIG.VENUE.lng], 15);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    L.marker([CONFIG.VENUE.lat, CONFIG.VENUE.lng]).addTo(map).bindPopup('<b>Lokasi Halal Bihalal</b>');
-    L.circle([CONFIG.VENUE.lat, CONFIG.VENUE.lng], { radius: CONFIG.VENUE.radius, color: '#2563eb', fillColor: '#2563eb', fillOpacity: 0.1 }).addTo(map);
-  }
-
-  function showToast(msg, type='info') {
-    const t=document.getElementById('toast'), tc=document.getElementById('toastContent'), ti=document.getElementById('toastIcon'), tm=document.getElementById('toastMessage');
-    const cols={success:'bg-emerald-600', error:'bg-red-600', warning:'bg-amber-600', info:'bg-blue-600'}, icos={success:'check-circle', error:'x-circle', warning:'alert-triangle', info:'info'};
-    tc.className = `px-4 py-3 rounded-xl shadow-lg text-white text-sm font-medium flex items-start gap-3 toast-enter ${cols[type]}`;
-    ti.innerHTML = `<i data-lucide="${icos[type]}" class="w-5 h-5"></i>`; tm.textContent = msg; t.classList.remove('hidden'); lucide.createIcons();
-    setTimeout(() => t.classList.add('hidden'), 4000);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('headerDate').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    const modeAdmin = urlParams.get('mode');
-
-    const cekWaktu = () => {
-      if (modeAdmin === 'tutup') { 
-        document.getElementById('mainFormSection').classList.add('hidden'); 
-        document.getElementById('closedSection').classList.remove('hidden'); 
-      } else { 
-        document.getElementById('mainFormSection').classList.remove('hidden'); 
-        document.getElementById('closedSection').classList.add('hidden'); 
-      }
-    };
-    
-    cekWaktu();
-
-    lucide.createIcons(); initMap(); loadStats(); loadGeoData(); loadSemuaData(); getGPS();
-    setInterval(() => { loadStats(); loadGeoData(); loadSemuaData(); }, 30000);
-  });
   </script>
 </body>
 </html>
