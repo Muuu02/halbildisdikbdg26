@@ -235,18 +235,19 @@
       }
     }
 
-    // Fungsi Menghitung Statistik secara Realtime di Browser
+    // Fungsi Menghitung Statistik (VERSI FIX BUG DISDIK = SD)
     function hitungStatistik(data) {
       let stats = { SD: 0, SMP: 0, TK: 0, KB: 0, SPS: 0, SKB: 0, Disdik: 0, Total: 0 };
       
       data.forEach(item => {
-        let cat = (item.kategori || '').toUpperCase();
+        let cat = (item.kategori || '').toUpperCase().trim();
         
-        if (cat.includes('SD')) stats.SD++;
-        else if (cat.includes('SMP')) stats.SMP++;
-        else if (cat.includes('TK')) stats.TK++;
-        else if (cat.includes('KB')) stats.KB++;
-        else if (cat.includes('SPS')) stats.SPS++;
+        // Pengecekan EXACT (Sama Persis) agar DISDIK tidak terbaca sebagai SD lagi :)
+        if (cat === 'SD') stats.SD++;
+        else if (cat === 'SMP') stats.SMP++;
+        else if (cat === 'TK') stats.TK++;
+        else if (cat === 'KB') stats.KB++;
+        else if (cat === 'SPS') stats.SPS++;
         else if (cat.includes('SKB') || cat.includes('PKBM') || cat.includes('TPA')) stats.SKB++;
         else if (cat.includes('DISDIK') || cat.includes('DINAS')) stats.Disdik++;
         
