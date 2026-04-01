@@ -78,7 +78,7 @@
 
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiA-R3-wJnjwMMqzysExCKWP-Jnntd6ExOI0Hw31r0opzM_A/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
           <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors"><i data-lucide="users" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">SKB & PKBM</h3><p class="text-xs text-slate-500">Sanggar & PKBM</p></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">SKB, TPA & PKBM</h3><p class="text-xs text-slate-500">Sanggar, TPA & PKBM</p></div>
           <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
         </a>
 
@@ -128,7 +128,7 @@
         <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">TK</p><p class="text-lg font-black text-blue-700" id="statTK">0</p></div>
         <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">KB</p><p class="text-lg font-black text-blue-700" id="statKB">0</p></div>
         <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">SPS</p><p class="text-lg font-black text-blue-700" id="statSPS">0</p></div>
-        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">SKB/PKBM</p><p class="text-lg font-black text-blue-700" id="statSKB">0</p></div>
+        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">SKB/TPA/PKBM</p><p class="text-lg font-black text-blue-700" id="statSKB">0</p></div>
         <div class="bg-purple-50 rounded-xl p-2 border border-purple-100 text-center"><p class="text-[9px] text-purple-500 font-bold uppercase mb-0.5">Dinas</p><p class="text-lg font-black text-purple-700" id="statDisdik">0</p></div>
         <div class="bg-slate-800 rounded-xl p-2 border border-slate-700 text-center shadow-md"><p class="text-[9px] text-slate-300 font-bold uppercase mb-0.5">TOTAL</p><p class="text-lg font-black text-white" id="statTotal">0</p></div>
       </div>
@@ -189,7 +189,7 @@
 
   <script>
     // ---------------------------------------------------------
-    // API SCRIPT LINK SUDAH DIMASUKKAN
+    // API SCRIPT LINK
     // ---------------------------------------------------------
     const API_URL = 'https://script.google.com/macros/s/AKfycbzFS1Fyhse4NjTKzmuVArR14lIRmj9uMLW-VX41hO5C2UQ_js5G3lL-pck7rEe_0hElQA/exec'; 
 
@@ -222,27 +222,26 @@
         
         if (data && data.length > 0) {
           semuaDataRekap = data;
-          hitungStatistik(data); // Fungsi untuk update kotak statistik
+          hitungStatistik(data); 
           terapkanFilter();
         } else {
           semuaDataRekap = [];
           tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-slate-500">Belum ada data absensi.</td></tr>';
           document.getElementById('totalDataTampil').textContent = 'Menampilkan: 0 data';
-          hitungStatistik([]); // Reset stat ke 0
+          hitungStatistik([]); 
         }
       } catch (e) { 
         tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-red-500 font-medium">Gagal memuat rekap. Periksa koneksi internet Anda.</td></tr>'; 
       }
     }
 
-    // Fungsi Menghitung Statistik (VERSI FIX BUG DISDIK = SD)
+    // Fungsi Menghitung Statistik
     function hitungStatistik(data) {
       let stats = { SD: 0, SMP: 0, TK: 0, KB: 0, SPS: 0, SKB: 0, Disdik: 0, Total: 0 };
       
       data.forEach(item => {
         let cat = (item.kategori || '').toUpperCase().trim();
         
-        // Pengecekan EXACT (Sama Persis) agar DISDIK tidak terbaca sebagai SD lagi :)
         if (cat === 'SD') stats.SD++;
         else if (cat === 'SMP') stats.SMP++;
         else if (cat === 'TK') stats.TK++;
@@ -254,7 +253,6 @@
         stats.Total++;
       });
 
-      // Tampilkan ke layar
       document.getElementById('statSD').textContent = stats.SD;
       document.getElementById('statSMP').textContent = stats.SMP;
       document.getElementById('statTK').textContent = stats.TK;
