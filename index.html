@@ -14,207 +14,275 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <style>
-    * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); min-height: 100vh; padding-bottom: 80px; }
-    .banner-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%); }
-    .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
-    .spinner { border: 2px solid rgba(255, 255, 255, 0.3); border-top-color: white; border-radius: 50%; width: 18px; height: 18px; animation: spin 0.6s linear infinite; }
+    * { 
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif; 
+      -webkit-tap-highlight-color: transparent; 
+    }
+    
+    body { 
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+      min-height: 100vh; 
+      padding-bottom: 90px; 
+    }
+
+    .banner-gradient { 
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%); 
+    }
+
+    .glass-card { 
+      background: rgba(255, 255, 255, 0.95); 
+      backdrop-filter: blur(10px); 
+      border: 1px solid rgba(255, 255, 255, 0.2); 
+    }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+    .spinner { 
+      border: 3px solid rgba(255, 255, 255, 0.3); 
+      border-top-color: #3b82f6; 
+      border-radius: 50%; 
+      width: 24px; 
+      height: 24px; 
+      animation: spin 0.8s linear infinite; 
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .tab-content { display: none; animation: fadeIn 0.3s ease; }
-    .tab-content.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { 
+      from { opacity: 0; transform: translateY(8px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+
+    .nav-active { color: #2563eb ! alienation; }
+    .nav-inactive { color: #94a3b8; }
   </style>
 </head>
 <body class="text-slate-800">
 
-  <header class="banner-gradient text-white sticky top-0 z-40 shadow-lg">
+  <header class="banner-gradient text-white sticky top-0 z-40 shadow-xl">
     <div class="border-b border-white/10">
-      <div class="max-w-3xl mx-auto px-4 py-2 flex justify-between items-center">
+      <div class="max-w-3xl mx-auto px-4 py-2 flex justify-between items-center text-[10px] md:text-xs">
         <div class="flex items-center gap-2">
-          <i data-lucide="calendar-check" class="w-4 h-4 text-blue-300"></i>
-          <span class="text-xs text-blue-200" id="headerDate">Sistem Terpadu</span>
+          <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-blue-300"></i>
+          <span class="text-blue-200 font-medium" id="headerDate">Memuat tanggal...</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+          <span class="text-blue-200">Sistem Online</span>
         </div>
       </div>
     </div>
-    <div class="max-w-3xl mx-auto px-4 py-5">
+    <div class="max-w-3xl mx-auto px-4 py-6">
       <div class="flex items-center gap-4">
         <div class="flex-shrink-0">
-          <div class="w-14 h-14 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center border border-white/20 p-1.5">
-            <img src="barokah.png" alt="Logo" class="w-full h-full object-contain">
+          <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 p-2 shadow-inner">
+            <img src="barokah.png" alt="Logo" class="w-full h-full object-contain" onerror="this.src='https://ui-avatars.com/api/?name=Disdik+Bandung&background=0D8ABC&color=fff'">
           </div>
         </div>
-        <div class="flex-1 min-w-0">
-          <h1 class="text-lg md:text-xl font-bold text-white leading-tight">Halal Bihalal Keluarga Dinas Pendidikan Kota Bandung</h1>
-          <div class="flex items-center mt-2">
-            <span class="px-3 py-1 bg-white/10 rounded-md text-sm font-semibold text-blue-100 border border-white/10">Kamis, 2 April 2026</span>
-          </div>
+        <div class="flex-1">
+          <h1 class="text-xl md:text-2xl font-extrabold text-white leading-tight tracking-tight">Halal Bihalal Keluarga Besar</h1>
+          <p class="text-blue-100 text-sm md:text-base font-medium opacity-90">Dinas Pendidikan Kota Bandung</p>
         </div>
       </div>
     </div>
   </header>
 
-  <div id="tab-absen" class="tab-content active max-w-3xl mx-auto px-4 py-6">
-    <div class="glass-card rounded-2xl p-6 shadow-sm border border-slate-100">
-      <div class="text-center mb-6">
-        <h2 class="text-xl font-bold text-slate-800">Silakan Pilih Kategori Instansi</h2>
-        <p class="text-sm text-slate-500 mt-1">Klik salah satu tombol di bawah ini untuk mengisi kehadiran.</p>
+  <main id="tab-absen" class="tab-content active max-w-3xl mx-auto px-4 py-6">
+    <div class="glass-card rounded-3xl p-6 shadow-sm">
+      <div class="mb-6">
+        <h2 class="text-lg font-bold text-slate-900">Pilih Kategori Instansi</h2>
+        <p class="text-xs text-slate-500">Silakan klik salah satu tombol di bawah untuk mengisi daftar hadir.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfM9RRoDYZ8bLbD28qWRK5ukH-allirD0f1Ol1yBJrfK4gP8g/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
-          <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors"><i data-lucide="school" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Sekolah Dasar (SD)</h3><p class="text-xs text-slate-500">Form Kehadiran SD</p></div>
-          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfM9RRoDYZ8bLbD28qWRK5ukH-allirD0f1Ol1yBJrfK4gP8g/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-blue-500 hover:bg-blue-50/30 transition-all group">
+          <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all"><i data-lucide="school" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800">Sekolah Dasar (SD)</h3><p class="text-[10px] text-slate-400">Presensi Guru & Staf SD</p></div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-blue-500"></i>
         </a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSctxOhhab7IWSbbWnOUv4u-W3F8uDQkwVT1jQKvZSz9VG8fnA/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
-          <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors"><i data-lucide="building-2" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Sekolah Menengah (SMP)</h3><p class="text-xs text-slate-500">Form Kehadiran SMP</p></div>
-          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        <a href="https://docs.google.com/forms/d/e/1FAIpSctxOhhab7IWSbbWnOUv4u-W3F8uDQkwVT1jQKvZSz9VG8fnA/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-indigo-500 hover:bg-indigo-50/30 transition-all group">
+          <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all"><i data-lucide="building-2" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800">Sekolah Menengah (SMP)</h3><p class="text-[10px] text-slate-400">Presensi Guru & Staf SMP</p></div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-indigo-500"></i>
         </a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiA-R3-wJnjwMMqzysExCKWP-Jnntd6ExOI0Hw31r0opzM_A/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
-          <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors"><i data-lucide="users" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">SKB, TPA & PKBM</h3><p class="text-xs text-slate-500">Sanggar, TPA & PKBM</p></div>
-          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiA-R3-wJnjwMMqzysExCKWP-Jnntd6ExOI0Hw31r0opzM_A/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-emerald-500 hover:bg-emerald-50/30 transition-all group">
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all"><i data-lucide="users" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800">SKB, TPA & PKBM</h3><p class="text-[10px] text-slate-400">Pendidikan Non-Formal</p></div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500"></i>
         </a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYith9MFsCzB5w3Rk8rWwHFfF5gnl_BS8FahJnN0608VEBPA/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
-          <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-lg flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors"><i data-lucide="heart-handshake" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">SPS</h3><p class="text-xs text-slate-500">Satuan PAUD Sejenis</p></div>
-          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYith9MFsCzB5w3Rk8rWwHFfF5gnl_BS8FahJnN0608VEBPA/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-teal-500 hover:bg-teal-50/30 transition-all group">
+          <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-all"><i data-lucide="heart-handshake" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800">SPS</h3><p class="text-[10px] text-slate-400">Satuan PAUD Sejenis</p></div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-teal-500"></i>
         </a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeLRZaADbbv5upWZDYT2UcusdxN9LdxQ2HsylkubKXDvfd5Q/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
-          <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white transition-colors"><i data-lucide="blocks" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Kelompok Bermain (KB)</h3><p class="text-xs text-slate-500">Form Kehadiran KB</p></div>
-          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeeLRZaADbbv5upWZDYT2UcusdxN9LdxQ2HsylkubKXDvfd5Q/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-orange-500 hover:bg-orange-50/30 transition-all group">
+          <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white transition-all"><i data-lucide="blocks" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800">Kelompok Bermain</h3><p class="text-[10px] text-slate-400">Form Kehadiran KB</p></div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-orange-500"></i>
         </a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRPEMjLPk8dEk07lal6xWGYi2rSylVEMKDslOls10KEkc9tQ/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-400 hover:shadow-md transition-all group">
-          <div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-lg flex items-center justify-center group-hover:bg-pink-600 group-hover:text-white transition-colors"><i data-lucide="baby" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Taman Kanak-Kanak (TK)</h3><p class="text-xs text-slate-500">Form Kehadiran TK</p></div>
-          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRPEMjLPk8dEk07lal6xWGYi2rSylVEMKDslOls10KEkc9tQ/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-pink-500 hover:bg-pink-50/30 transition-all group">
+          <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-xl flex items-center justify-center group-hover:bg-pink-600 group-hover:text-white transition-all"><i data-lucide="baby" class="w-6 h-6"></i></div>
+          <div class="flex-1"><h3 class="font-bold text-slate-800">Taman Kanak-Kanak</h3><p class="text-[10px] text-slate-400">Form Kehadiran TK</p></div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-300 group-hover:text-pink-500"></i>
         </a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2bcKfJn64C2HMmE4piUAXqQgCuX6v8zjR90gvSK7udlcfow/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-purple-50 border border-purple-200 rounded-xl hover:border-purple-400 hover:shadow-md transition-all group md:col-span-2">
-          <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors"><i data-lucide="landmark" class="w-6 h-6"></i></div>
-          <div class="flex-1"><h3 class="font-bold text-slate-800 text-lg">Dinas Pendidikan / Tamu</h3><p class="text-xs text-slate-500">Pegawai Dinas & Undangan</p></div>
-          <i data-lucide="chevron-right" class="w-5 h-5 text-slate-400"></i>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2bcKfJn64C2HMmE4piUAXqQgCuX6v8zjR90gvSK7udlcfow/viewform" target="_blank" class="flex items-center gap-4 p-4 bg-purple-600 text-white border border-purple-400 rounded-2xl hover:bg-purple-700 transition-all shadow-lg shadow-purple-200 sm:col-span-2">
+          <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center"><i data-lucide="landmark" class="w-6 h-6"></i></div>
+          <div class="flex-1">
+            <h3 class="font-bold text-white">Dinas Pendidikan / Tamu Undangan</h3>
+            <p class="text-[10px] text-purple-100">Khusus Pegawai Dinas & Undangan Resmi</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-6 h-6 opacity-50"></i>
         </a>
       </div>
     </div>
-  </div>
+  </main>
 
-  <div id="tab-rekap" class="tab-content max-w-3xl mx-auto px-4 py-6">
-    <div class="glass-card rounded-2xl p-5 shadow-soft">
+  <main id="tab-rekap" class="tab-content max-w-3xl mx-auto px-4 py-6">
+    <div class="glass-card rounded-3xl p-5 shadow-sm">
       
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-2">
-          <i data-lucide="list-checks" class="w-5 h-5 text-blue-600"></i>
-          <h4 class="text-sm font-semibold text-slate-800">Rekap & Statistik</h4>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-lg font-bold text-slate-900">Statistik Kehadiran</h2>
+          <p class="text-xs text-slate-500">Data real-time dari Google Sheets</p>
         </div>
-        <button onclick="loadSemuaData()" class="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-100 transition shadow-sm">
-          <i data-lucide="refresh-cw" class="w-3 h-3"></i> Refresh Data
+        <button onclick="loadSemuaData()" class="p-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all flex items-center gap-2 text-xs font-bold shadow-lg shadow-blue-200">
+          <i data-lucide="refresh-cw" class="w-4 h-4" id="refreshIcon"></i> Refresh
         </button>
       </div>
 
-      <div class="grid grid-cols-4 md:grid-cols-4 gap-2 mb-5">
-        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">SD</p><p class="text-lg font-black text-blue-700" id="statSD">0</p></div>
-        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">SMP</p><p class="text-lg font-black text-blue-700" id="statSMP">0</p></div>
-        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">TK</p><p class="text-lg font-black text-blue-700" id="statTK">0</p></div>
-        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">KB</p><p class="text-lg font-black text-blue-700" id="statKB">0</p></div>
-        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">SPS</p><p class="text-lg font-black text-blue-700" id="statSPS">0</p></div>
-        <div class="bg-blue-50 rounded-xl p-2 border border-blue-100 text-center"><p class="text-[9px] text-blue-500 font-bold uppercase mb-0.5">SKB/TPA/PKBM</p><p class="text-lg font-black text-blue-700" id="statSKB">0</p></div>
-        <div class="bg-purple-50 rounded-xl p-2 border border-purple-100 text-center"><p class="text-[9px] text-purple-500 font-bold uppercase mb-0.5">Dinas</p><p class="text-lg font-black text-purple-700" id="statDisdik">0</p></div>
-        <div class="bg-slate-800 rounded-xl p-2 border border-slate-700 text-center shadow-md"><p class="text-[9px] text-slate-300 font-bold uppercase mb-0.5">TOTAL</p><p class="text-lg font-black text-white" id="statTotal">0</p></div>
+      <div class="grid grid-cols-4 gap-2 mb-6">
+        <div class="bg-blue-50 border border-blue-100 p-2.5 rounded-2xl text-center">
+          <p class="text-[9px] text-blue-500 font-extrabold uppercase tracking-tight">SD</p>
+          <p class="text-xl font-black text-blue-700" id="statSD">0</p>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 p-2.5 rounded-2xl text-center">
+          <p class="text-[9px] text-indigo-500 font-extrabold uppercase tracking-tight">SMP</p>
+          <p class="text-xl font-black text-indigo-700" id="statSMP">0</p>
+        </div>
+        <div class="bg-pink-50 border border-pink-100 p-2.5 rounded-2xl text-center">
+          <p class="text-[9px] text-pink-500 font-extrabold uppercase tracking-tight">TK</p>
+          <p class="text-xl font-black text-pink-700" id="statTK">0</p>
+        </div>
+        <div class="bg-purple-50 border border-purple-100 p-2.5 rounded-2xl text-center">
+          <p class="text-[9px] text-purple-500 font-extrabold uppercase tracking-tight">Dinas</p>
+          <p class="text-xl font-black text-purple-700" id="statDisdik">0</p>
+        </div>
+        <div class="bg-slate-900 col-span-4 p-3 rounded-2xl flex justify-between items-center px-6 mt-1 shadow-lg">
+          <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Total Kehadiran</p>
+          <p class="text-2xl font-black text-white" id="statTotal">0</p>
+        </div>
       </div>
       
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 space-y-3">
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-4 space-y-3">
         <div class="relative">
-          <div class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i data-lucide="search" class="w-4 h-4"></i></div>
-          <input type="text" id="filterPencarian" onkeyup="terapkanFilter()" class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500" placeholder="Cari nama atau instansi...">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+          <input type="text" id="filterPencarian" onkeyup="terapkanFilter()" class="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all" placeholder="Cari nama atau instansi...">
         </div>
-        <div class="flex items-center gap-2">
-          <div class="flex-1">
-            <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Dari Jam</p>
-            <input type="time" id="filterWaktuMulai" onchange="terapkanFilter()" class="w-full px-2 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
+        
+        <div class="flex flex-wrap gap-2 text-xs">
+          <div class="flex-1 min-w-[120px]">
+            <span class="text-[9px] font-bold text-slate-400 ml-1">MULAI JAM</span>
+            <input type="time" id="filterWaktuMulai" onchange="terapkanFilter()" class="w-full mt-1 p-2 bg-white border border-slate-200 rounded-lg">
           </div>
-          <div class="flex-1">
-            <p class="text-[10px] text-slate-500 font-bold uppercase mb-1">Sampai Jam</p>
-            <input type="time" id="filterWaktuAkhir" onchange="terapkanFilter()" class="w-full px-2 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
+          <div class="flex-1 min-w-[120px]">
+            <span class="text-[9px] font-bold text-slate-400 ml-1">SAMPAI JAM</span>
+            <input type="time" id="filterWaktuAkhir" onchange="terapkanFilter()" class="w-full mt-1 p-2 bg-white border border-slate-200 rounded-lg">
           </div>
-          <div class="pt-5">
-            <button onclick="resetFilter()" class="p-2 bg-slate-200 text-slate-600 rounded-lg hover:bg-slate-300 transition" title="Reset Filter"><i data-lucide="x" class="w-4 h-4"></i></button>
-          </div>
+          <button onclick="resetFilter()" class="self-end p-2.5 bg-slate-200 text-slate-600 rounded-lg hover:bg-slate-300 transition" title="Reset Filter">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
         </div>
-        <div class="text-right">
-          <span id="totalDataTampil" class="text-xs font-bold text-blue-600">Menampilkan: 0 data</span>
+        <div class="text-[10px] font-bold text-blue-600 flex justify-between items-center px-1">
+          <span id="totalDataTampil">Menampilkan: 0 data</span>
+          <span class="text-slate-400">*Diurutkan dari terbaru</span>
         </div>
       </div>
       
-      <div class="overflow-hidden border border-slate-200 rounded-xl">
-        <div class="overflow-x-auto max-h-[500px] custom-scrollbar bg-white">
-          <table class="w-full text-left relative">
-            <thead class="sticky top-0 z-10">
-              <tr class="bg-slate-100 text-slate-500 text-[10px] uppercase tracking-wider shadow-sm">
+      <div class="overflow-hidden border border-slate-200 rounded-2xl shadow-inner">
+        <div class="overflow-x-auto max-h-[400px] custom-scrollbar bg-white">
+          <table class="w-full text-left">
+            <thead class="sticky top-0 bg-slate-100 z-10 border-b border-slate-200">
+              <tr class="text-[9px] font-black uppercase text-slate-500 tracking-wider">
                 <th class="p-3 w-10 text-center">No</th>
                 <th class="p-3">Waktu & Nama</th>
-                <th class="p-3">Instansi & Kategori</th>
+                <th class="p-3">Instansi</th>
               </tr>
             </thead>
-            <tbody id="rekapTableBody" class="text-sm divide-y divide-slate-100">
-              <tr><td colspan="3" class="p-8 text-center text-slate-400 font-medium">Klik Refresh Data untuk memuat.</td></tr>
+            <tbody id="rekapTableBody" class="text-xs divide-y divide-slate-50">
+              <tr><td colspan="3" class="p-12 text-center text-slate-400 italic">Silakan klik refresh data.</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
     </div>
-  </div>
+  </main>
 
-  <nav class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-slate-200 z-[100] pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
-    <div class="max-w-3xl mx-auto flex justify-around">
-      <button id="btn-tab-absen" onclick="switchTab('absen')" class="flex-1 py-3 flex flex-col items-center justify-center text-blue-600 transition-colors">
-        <i data-lucide="edit-3" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold tracking-wide uppercase">Absen</span>
+  <nav class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-xl border-t border-slate-200 z-[100] pb-safe shadow-[0_-8px_30px_rgba(0,0,0,0.08)]">
+    <div class="max-w-3xl mx-auto flex justify-around items-center h-20 px-6">
+      <button id="btn-tab-absen" onclick="switchTab('absen')" class="flex flex-col items-center gap-1 group">
+        <div class="p-2 rounded-xl group-active:scale-90 transition-transform">
+          <i data-lucide="user-plus" class="w-7 h-7 nav-active" id="icon-absen"></i>
+        </div>
+        <span class="text-[10px] font-black uppercase tracking-widest text-blue-600" id="label-absen">Presensi</span>
       </button>
-      <button id="btn-tab-rekap" onclick="switchTab('rekap')" class="flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 transition-colors">
-        <i data-lucide="bar-chart-2" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold tracking-wide uppercase">Rekap & Stat</span>
+      
+      <div class="w-px h-8 bg-slate-200"></div>
+
+      <button id="btn-tab-rekap" onclick="switchTab('rekap')" class="flex flex-col items-center gap-1 group">
+        <div class="p-2 rounded-xl group-active:scale-90 transition-transform">
+          <i data-lucide="bar-chart-big" class="w-7 h-7 nav-inactive" id="icon-rekap"></i>
+        </div>
+        <span class="text-[10px] font-black uppercase tracking-widest text-slate-400" id="label-rekap">Statistik</span>
       </button>
     </div>
   </nav>
 
   <script>
-    // ---------------------------------------------------------
-    // API SCRIPT LINK
-    // ---------------------------------------------------------
+    // --- KONFIGURASI ---
     const API_URL = 'https://script.google.com/macros/s/AKfycbzFS1Fyhse4NjTKzmuVArR14lIRmj9uMLW-VX41hO5C2UQ_js5G3lL-pck7rEe_0hElQA/exec'; 
-
     let semuaDataRekap = []; 
 
+    // --- FUNGSI NAVIGASI ---
     function switchTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.getElementById('tab-' + tabName).classList.add('active');
       
-      const btnAbsen = document.getElementById('btn-tab-absen');
-      const btnRekap = document.getElementById('btn-tab-rekap');
-      
+      const iconAbsen = document.getElementById('icon-absen');
+      const labelAbsen = document.getElementById('label-absen');
+      const iconRekap = document.getElementById('icon-rekap');
+      const labelRekap = document.getElementById('label-rekap');
+
       if(tabName === 'absen') {
-        btnAbsen.className = 'flex-1 py-3 flex flex-col items-center justify-center text-blue-600 transition-colors';
-        btnRekap.className = 'flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 transition-colors';
+        iconAbsen.className = 'w-7 h-7 text-blue-600';
+        labelAbsen.className = 'text-[10px] font-black uppercase tracking-widest text-blue-600';
+        iconRekap.className = 'w-7 h-7 text-slate-400';
+        labelRekap.className = 'text-[10px] font-black uppercase tracking-widest text-slate-400';
       } else {
-        btnRekap.className = 'flex-1 py-3 flex flex-col items-center justify-center text-blue-600 transition-colors';
-        btnAbsen.className = 'flex-1 py-3 flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 transition-colors';
+        iconRekap.className = 'w-7 h-7 text-blue-600';
+        labelRekap.className = 'text-[10px] font-black uppercase tracking-widest text-blue-600';
+        iconAbsen.className = 'w-7 h-7 text-slate-400';
+        labelAbsen.className = 'text-[10px] font-black uppercase tracking-widest text-slate-400';
         if (semuaDataRekap.length === 0) loadSemuaData(); 
       }
     }
 
+    // --- FUNGSI AMBIL DATA ---
     async function loadSemuaData() {
       const tbody = document.getElementById('rekapTableBody');
-      tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-slate-400"><div class="spinner border-slate-300 border-t-blue-600 mx-auto mb-3"></div><p class="text-sm">Menarik data dari server...</p></td></tr>';
+      const refreshBtn = document.getElementById('refreshIcon');
+      
+      refreshBtn.classList.add('animate-spin');
+      tbody.innerHTML = '<tr><td colspan="3" class="p-20 text-center"><div class="spinner mx-auto mb-4"></div><p class="text-slate-400 font-medium">Sinkronisasi Cloud...</p></td></tr>';
       
       try {
         const res = await fetch(`${API_URL}?action=recent`); 
@@ -226,39 +294,36 @@
           terapkanFilter();
         } else {
           semuaDataRekap = [];
-          tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-slate-500">Belum ada data absensi.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="3" class="p-12 text-center text-slate-500">Data masih kosong.</td></tr>';
           document.getElementById('totalDataTampil').textContent = 'Menampilkan: 0 data';
           hitungStatistik([]); 
         }
       } catch (e) { 
-        tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-red-500 font-medium">Gagal memuat rekap. Periksa koneksi internet Anda.</td></tr>'; 
+        tbody.innerHTML = '<tr><td colspan="3" class="p-12 text-center text-red-500 font-bold italic">Gagal terhubung ke server.</td></tr>'; 
+      } finally {
+        refreshBtn.classList.remove('animate-spin');
       }
     }
 
-    // Fungsi Menghitung Statistik
+    // --- STATISTIK & FILTER ---
     function hitungStatistik(data) {
       let stats = { SD: 0, SMP: 0, TK: 0, KB: 0, SPS: 0, SKB: 0, Disdik: 0, Total: 0 };
       
       data.forEach(item => {
         let cat = (item.kategori || '').toUpperCase().trim();
-        
         if (cat === 'SD') stats.SD++;
         else if (cat === 'SMP') stats.SMP++;
         else if (cat === 'TK') stats.TK++;
         else if (cat === 'KB') stats.KB++;
         else if (cat === 'SPS') stats.SPS++;
-        else if (cat.includes('SKB') || cat.includes('PKBM') || cat.includes('TPA')) stats.SKB++;
+        else if (cat.includes('SKB') || cat.includes('PKBM')) stats.SKB++;
         else if (cat.includes('DISDIK') || cat.includes('DINAS')) stats.Disdik++;
-        
         stats.Total++;
       });
 
       document.getElementById('statSD').textContent = stats.SD;
       document.getElementById('statSMP').textContent = stats.SMP;
       document.getElementById('statTK').textContent = stats.TK;
-      document.getElementById('statKB').textContent = stats.KB;
-      document.getElementById('statSPS').textContent = stats.SPS;
-      document.getElementById('statSKB').textContent = stats.SKB;
       document.getElementById('statDisdik').textContent = stats.Disdik;
       document.getElementById('statTotal').textContent = stats.Total;
     }
@@ -275,15 +340,55 @@
         
         let cocokWaktu = true;
         if (waktuMulai || waktuAkhir) {
-          const jamData = new Date(item.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }); 
+          const t = new Date(item.timestamp);
+          const jamData = t.getHours().toString().padStart(2, '0') + ':' + t.getMinutes().toString().padStart(2, '0');
           if (waktuMulai && jamData < waktuMulai) cocokWaktu = false;
           if (waktuAkhir && jamData > waktuAkhir) cocokWaktu = false;
         }
-        
         return cocokTeks && cocokWaktu;
       });
       
       renderTabel(dataTersaring);
+    }
+
+    function renderTabel(data) {
+      const tbody = document.getElementById('rekapTableBody');
+      document.getElementById('totalDataTampil').textContent = `Menampilkan: ${data.length} data`;
+      
+      if (data.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="p-12 text-center text-slate-400">Data tidak ditemukan.</td></tr>';
+        return;
+      }
+
+      // Sort by latest
+      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      
+      tbody.innerHTML = '';
+      data.forEach((item, index) => {
+        let timeStr = '-';
+        if(item.timestamp) {
+           const d = new Date(item.timestamp);
+           timeStr = d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+        }
+        
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition-colors";
+        tr.innerHTML = `
+          <td class="p-3 text-[10px] text-slate-400 font-black text-center">${index + 1}</td>
+          <td class="p-3">
+            <div class="flex flex-col">
+              <span class="text-[9px] font-black text-blue-600">${timeStr} WIB</span>
+              <span class="font-bold text-slate-900 leading-tight">${item.nama}</span>
+              <span class="text-[9px] text-slate-400 uppercase font-medium">${item.jabatan || '-'}</span>
+            </div>
+          </td>
+          <td class="p-3">
+            <p class="font-semibold text-slate-700 leading-none">${item.instansi || '-'}</p>
+            <span class="inline-block mt-1.5 px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded text-[8px] font-black uppercase tracking-tighter">${item.kategori || '-'}</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
 
     function resetFilter() {
@@ -293,57 +398,10 @@
       terapkanFilter();
     }
 
-    function renderTabel(data) {
-      const tbody = document.getElementById('rekapTableBody');
-      document.getElementById('totalDataTampil').textContent = `Menampilkan: ${data.length} data`;
-      
-      if (data.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="3" class="p-8 text-center text-slate-500 font-medium">Tidak ada data yang cocok.</td></tr>';
-        return;
-      }
-
-      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-      
-      tbody.innerHTML = '';
-      const fragment = document.createDocumentFragment();
-      
-      data.forEach((item, index) => {
-        let timeStr = '-';
-        if(item.timestamp) {
-           const d = new Date(item.timestamp);
-           if (!isNaN(d.getTime())) {
-             timeStr = d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-           }
-        }
-        
-        const instansi = item.instansi ? item.instansi : '-'; 
-        const jabatan = item.jabatan ? item.jabatan : '-';
-        const kategori = item.kategori ? item.kategori : '-'; 
-
-        const tr = document.createElement('tr');
-        tr.className = "hover:bg-slate-50 transition-colors border-b border-slate-100";
-        tr.innerHTML = `
-          <td class="p-3 text-xs text-slate-400 font-bold text-center align-top">${index + 1}</td>
-          <td class="p-3 align-top">
-            <div class="flex flex-col">
-              <span class="text-[10px] font-bold text-blue-600 mb-0.5">${timeStr} WIB</span>
-              <span class="font-bold text-slate-800 leading-tight">${item.nama}</span>
-              <span class="text-[10px] text-slate-500 uppercase mt-0.5">${jabatan}</span>
-            </div>
-          </td>
-          <td class="p-3 align-top">
-            <p class="text-xs text-slate-700 font-medium leading-tight">${instansi}</p>
-            <span class="inline-block mt-1 px-1.5 py-0.5 bg-indigo-50 text-indigo-600 rounded text-[9px] font-bold tracking-wider">${kategori}</span>
-          </td>
-        `;
-        fragment.appendChild(tr);
-      });
-      
-      tbody.appendChild(fragment);
-    }
-
+    // --- INITIALIZE ---
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('headerDate').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+      document.getElementById('headerDate').textContent = new Date().toLocaleDateString('id-ID', options);
       lucide.createIcons();
     });
   </script>
